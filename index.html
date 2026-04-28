@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rahul Pratap | Data & Operations Analyst</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
   --text:#fff;
   --muted:#9aa0a6;
   --accent:#7f5af0;
-  --accent2:#2cb67d;
+  --accent2:#00f0ff;
   --card:rgba(255,255,255,0.05);
 }
 
@@ -24,6 +25,7 @@
   --card:#fff;
 }
 
+/* GLOBAL */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -36,7 +38,7 @@ body{
 nav{
   display:flex;
   justify-content:space-between;
-  padding:1rem 3rem;
+  padding:1rem 2rem;
   position:fixed;
   width:100%;
   backdrop-filter:blur(10px);
@@ -44,64 +46,56 @@ nav{
 
 .toggle{
   cursor:pointer;
+  background:var(--accent);
   padding:6px 12px;
   border-radius:20px;
-  background:var(--accent);
-  color:#fff;
 }
 
 /* HERO */
 .hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 3rem;
+  padding:120px 2rem 60px;
 }
 
 .hero h1{
-  font-size:4rem;
+  font-size:4.5rem;
+  margin:0;
 }
 
-.gradient{
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
+.hero h2{
+  color:var(--accent2);
+  margin-top:10px;
 }
 
+.hero p{
+  max-width:700px;
+}
+
+/* METRICS */
 .metrics{
   display:flex;
   gap:40px;
-  margin-top:30px;
-}
-
-.metric h2{
-  color:var(--accent2);
+  margin-top:20px;
+  flex-wrap:wrap;
 }
 
 /* SECTION */
 section{
-  padding:5rem 3rem;
+  padding:3rem 2rem;
 }
 
 /* CARD */
 .card{
   background:var(--card);
-  padding:2rem;
-  border-radius:16px;
-  margin-top:1.5rem;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
+  padding:1.5rem;
+  border-radius:12px;
+  margin-top:1rem;
 }
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:2rem;
+  gap:20px;
 }
 
 /* TIMELINE */
@@ -110,29 +104,30 @@ section{
   padding-left:20px;
 }
 
-.timeline-item{
-  margin-bottom:30px;
-}
-
-/* EDUCATION */
-.edu-card{
-  border-left:4px solid var(--accent2);
-}
-
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:10px 20px;
-  border-radius:25px;
-  background:var(--accent);
-  color:#fff;
-  text-decoration:none;
-}
-
-footer{
-  text-align:center;
+/* CONTACT */
+.contact-box{
+  border:1px solid var(--accent2);
   padding:2rem;
+  max-width:1000px;
+  margin:auto;
+  background:rgba(0,0,0,0.6);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+.label{
+  font-size:0.8rem;
   color:var(--muted);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:2.8rem;}
 }
 </style>
 </head>
@@ -141,106 +136,106 @@ footer{
 
 <nav>
   <b>Rahul Pratap</b>
-  <span class="toggle" onclick="toggleTheme()">Toggle Mode</span>
+  <span class="toggle" onclick="toggleTheme()">Toggle</span>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-<h1><span class="gradient">Data → Decisions → Impact</span></h1>
+
+<h1>Rahul Pratap</h1>
+
+<h2>Business Operations Analyst | Data Analytics | Power BI | Excel | SQL</h2>
 
 <p>
-Business Operations Analyst specializing in data analytics, MIS reporting, and dashboard-driven decision making.
+Transforming data into actionable insights, optimizing processes, and enabling smarter business decisions.
 </p>
 
 <p style="color:var(--muted)">
-Trusted to manage 10,000+ users and analyze 50,000+ data points across multi-city operations.
+Managed 10,000+ users • Analyzed 50,000+ data points • Built 5+ dashboards
 </p>
 
 <div class="metrics">
-  <div class="metric"><h2>10K+</h2><p>Users</p></div>
-  <div class="metric"><h2>50K+</h2><p>Data Points</p></div>
-  <div class="metric"><h2>5+</h2><p>Dashboards</p></div>
+  <div><b>10K+</b><br>Users</div>
+  <div><b>50K+</b><br>Data Points</div>
+  <div><b>5+</b><br>Dashboards</div>
 </div>
+
 </section>
 
 <!-- EXPERIENCE -->
 <section>
+
 <h2>Experience</h2>
 
 <div class="timeline">
 
-<div class="timeline-item card">
+<div class="card">
 <h3>Business Operations Analyst</h3>
 <p>Commerce Teachers' Foundation | 2024–Present</p>
 <ul>
 <li>Managed 10,000+ participants across 15+ cities</li>
 <li>Analyzed 50,000+ data points using Excel</li>
-<li>Built 5+ Power BI dashboards for KPIs</li>
+<li>Built Power BI dashboards for KPIs</li>
 <li>Delivered MIS reports to leadership</li>
-<li>Handled onboarding of 200+ schools</li>
 </ul>
 </div>
 
-<div class="timeline-item card">
+<div class="card">
 <h3>Operations Associate</h3>
 <p>Pravartee Sales Pvt Ltd | 2024</p>
 <ul>
 <li>Analyzed 500+ transactions monthly</li>
-<li>Optimized pricing and workflows</li>
-<li>Built reporting dashboards</li>
+<li>Optimized workflows and pricing</li>
 </ul>
 </div>
 
 </div>
+
 </section>
 
 <!-- PROJECTS -->
 <section>
+
 <h2>Projects</h2>
 
 <div class="card">
 <h3>Global Store Data Analysis</h3>
-<p><b>Impact:</b> Identified high-performing regions & product categories</p>
-<a href="https://github.com/rahulstats-analyst/Excel-Global_Store_Data_Analysis.git" target="_blank" class="btn">View</a>
+<p>Identified high-performing regions and product categories.</p>
 </div>
 
 <div class="card">
 <h3>Music Store SQL Analysis</h3>
-<p><b>Impact:</b> Discovered customer revenue patterns & top segments</p>
-<a href="https://github.com/rahulstats-analyst/Music_Store_Analysis_Project.git" target="_blank" class="btn">View</a>
+<p>Analyzed customer behavior and revenue patterns.</p>
 </div>
 
 <div class="card">
-<h3>Personal Finance Dashboard</h3>
-<p><b>Impact:</b> Enabled structured expense & savings tracking</p>
-<a href="https://github.com/rahulstats-analyst/PERSONAL-FINANCE-ANALYTICS-DASHBOARD.git" target="_blank" class="btn">View</a>
+<h3>Finance Dashboard</h3>
+<p>Tracked income, expenses, and savings insights.</p>
 </div>
 
 <div class="card">
-<h3>BOB Sales & ATM Analysis</h3>
-<p><b>Impact:</b> Identified 89% asset concentration & revenue trends</p>
-<a href="https://media.licdn.com/dms/image/v2/D562DAQF74s7w6ER-IQ/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1727781796795?e=1778000400&v=beta&t=1Eozs4hOcvenSP9arCmeG5KgE8TzWN7LzdCKu93wfug" target="_blank" class="btn">View</a>
+<h3>BOB ATM Analysis</h3>
+<p>Analyzed ATM performance, revenue trends, and cost efficiency.</p>
 </div>
 
 </section>
 
 <!-- EDUCATION -->
 <section>
+
 <h2>Education</h2>
 
 <div class="grid">
 
-<div class="card edu-card">
-<h3>B.Tech – Electrical Engineering</h3>
+<div class="card">
+<h3>B.Tech Electrical Engineering</h3>
 <p>Dr. APJ Abdul Kalam Technical University</p>
 <p>2019 – 2023</p>
-<p>Strong foundation in analytical problem-solving and systems thinking.</p>
 </div>
 
-<div class="card edu-card">
+<div class="card">
 <h3>Higher Secondary (CBSE)</h3>
-<p>Science Stream | 2018</p>
-<p>Focused on mathematics and logical reasoning.</p>
+<p>Science | 2018</p>
 </div>
 
 </div>
@@ -249,7 +244,8 @@ Trusted to manage 10,000+ users and analyze 50,000+ data points across multi-cit
 
 <!-- SKILLS -->
 <section>
-<h2>Core Skills</h2>
+
+<h2>Skills</h2>
 
 <div class="grid">
 <div class="card">Excel • Power BI • SQL • Python</div>
@@ -260,15 +256,68 @@ Trusted to manage 10,000+ users and analyze 50,000+ data points across multi-cit
 
 </section>
 
-<footer>
-© 2026 Rahul Pratap | Portfolio
+<!-- CONTACT -->
+<section>
+
+<h2>Contact</h2>
+
+<div class="contact-box">
+
+<p style="color:var(--accent2);font-family:monospace;">> INITIALIZE_CONTACT_PROTOCOL</p>
+
+<h1>Let's Build Something</h1>
+
+<p>
+Open to full-time roles, freelance projects, and collaborations across India.
+</p>
+
+<div class="contact-grid">
+
+<div>
+<p class="label">EMAIL</p>
+<p>rahul.15pratap@gmail.com</p>
+</div>
+
+<div>
+<p class="label">PHONE</p>
+<p>+91 936-954-9816</p>
+</div>
+
+<div>
+<p class="label">LINKEDIN</p>
+<p>/rahul-pratap-175276264</p>
+</div>
+
+<div>
+<p class="label">GITHUB</p>
+<p>/rahulstats-analyst</p>
+</div>
+
+<div>
+<p class="label">LOCATION</p>
+<p>Ghaziabad, India</p>
+</div>
+
+<div>
+<p class="label">AVAILABILITY</p>
+<p>Immediate – 15 Days</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer style="text-align:center;padding:2rem;color:var(--muted)">
+© 2026 Rahul Pratap
 </footer>
 
 <script>
 function toggleTheme(){
   document.body.classList.toggle("light");
   localStorage.setItem("theme",
-    document.body.classList.contains("light") ? "light":"dark");
+    document.body.classList.contains("light")?"light":"dark");
 }
 
 window.onload=function(){
