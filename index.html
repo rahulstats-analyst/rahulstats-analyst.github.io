@@ -1,383 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RP.SYS // Rahul Pratap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-base: #050a0e;
+            --bg-panel: #0a151c;
+            --text-main: #00f0ff;
+            --text-dim: #4a7b8c;
+            --text-white: #e0f8ff;
+            --accent-purple: #b052ff;
+            --accent-green: #00ff66;
+            --border-color: #005566;
+            --glow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
 
-<title>Rahul Pratap | Data & Operations Analyst</title>
+        [data-theme="light"] {
+            --bg-base: #f0f4f8;
+            --bg-panel: #ffffff;
+            --text-main: #005b70;
+            --text-dim: #5c7c8a;
+            --text-white: #001f29;
+            --accent-purple: #7a22cc;
+            --accent-green: #008f39;
+            --border-color: #a0c4cc;
+            --glow: none;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
 
-<style>
-:root{
-  --bg:#05070d;
-  --text:#ffffff;
-  --muted:#9aa0a6;
-  --accent:#7f5af0;
-  --accent2:#00f0ff;
-  --card:rgba(255,255,255,0.05);
-}
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--bg-base);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-.light{
-  --bg:#f8f9fb;
-  --text:#111;
-  --muted:#555;
-  --card:#ffffff;
-}
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.2s;
+        }
 
-/* GLOBAL */
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+        a:hover {
+            text-shadow: var(--glow);
+            text-decoration: underline;
+        }
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:1rem 2rem;
-  position:fixed;
-  width:100%;
-  backdrop-filter:blur(10px);
-}
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.toggle{
-  cursor:pointer;
-  background:var(--accent);
-  padding:6px 12px;
-  border-radius:20px;
-}
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px dashed var(--border-color);
+            margin-bottom: 40px;
+        }
 
-/* HERO */
-.hero{
-  padding:120px 2rem 60px;
-}
+        .logo {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            font-weight: bold;
+            text-shadow: var(--glow);
+        }
 
-.hero h1{
-  font-size:5rem;
-  margin:0;
-}
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
 
-.hero h2{
-  color:var(--accent2);
-  margin-top:10px;
-}
+        .nav-links a {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
 
-.hero p{
-  max-width:700px;
-}
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
 
-/* METRICS */
-.metrics{
-  display:flex;
-  gap:40px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
+        /* Theme Toggle */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            cursor: pointer;
+        }
 
-/* SECTION */
-.section{
-  padding:4rem 2rem;
-}
+        .toggle-switch {
+            width: 40px;
+            height: 20px;
+            border: 1px solid var(--text-main);
+            border-radius: 10px;
+            position: relative;
+            background: var(--bg-panel);
+        }
 
-/* CARD */
-.card{
-  background:var(--card);
-  padding:1.5rem;
-  border-radius:12px;
-  margin-top:1rem;
-}
+        .toggle-dot {
+            width: 14px;
+            height: 14px;
+            background: var(--text-main);
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            transition: 0.3s;
+        }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
+        [data-theme="light"] .toggle-dot {
+            transform: translateX(20px);
+        }
 
-/* TIMELINE */
-.timeline{
-  border-left:2px solid var(--accent);
-  padding-left:20px;
-}
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
 
-/* CONTACT */
-.contact{
-  max-width:1000px;
-  margin:auto;
-  padding:2rem;
-  border:1px solid rgba(0,255,255,0.4);
-  background:rgba(0,0,0,0.6);
-  border-radius:12px;
-}
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem); /* Massive name */
+            color: var(--text-main);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.2);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
 
-.terminal-tag{
-  color:#00f0ff;
-  font-family:monospace;
-  font-size:0.9rem;
-}
+        .headline {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
 
-.section-title{
-  font-size:2.5rem;
-  margin-top:10px;
-}
+        .hl-purple { color: var(--accent-purple); }
+        .hl-cyan { color: var(--text-main); }
+        .hl-green { color: var(--accent-green); }
 
-.contact-desc{
-  color:var(--muted);
-  max-width:600px;
-  line-height:1.6;
-}
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-  margin-top:25px;
-}
+        .stat-box {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
 
-.contact-label{
-  font-size:0.75rem;
-  color:var(--muted);
-}
+        .stat-box span {
+            color: var(--text-main);
+            font-weight: bold;
+        }
 
-.contact-value{
-  font-weight:500;
-}
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 60px;
+        }
 
-.contact-value a{
-  color:#00f0ff;
-  text-decoration:none;
-}
+        .section-title {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.contact-value a:hover{
-  text-decoration:underline;
-}
+        .section-title::before {
+            content: '>';
+        }
 
-.highlight{
-  color:#2cb67d;
-}
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: dashed var(--border-color);
+            margin-left: 10px;
+        }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:2rem;
-  color:var(--muted);
-}
+        /* Terminal Cards (Projects/Experience) */
+        .terminal-card {
+            border: 1px solid var(--border-color);
+            background: var(--bg-panel);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
 
-/* MOBILE */
-@media(max-width:600px){
-  .hero h1{font-size:3rem;}
-}
-</style>
+        .terminal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--text-main);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-title { font-weight: bold; font-size: 1.1rem; }
+        .card-date { color: var(--text-dim); font-size: 0.9rem; }
+        .card-body { color: var(--text-white); font-size: 0.95rem; }
+        
+        .tech-tags { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { border: 1px solid var(--text-dim); padding: 2px 8px; font-size: 0.8rem; color: var(--text-dim); }
+
+        .btn-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .btn-link:hover {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        /* --- CONTACT PROTOCOL --- */
+        .contact-protocol {
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            position: relative;
+            background: var(--bg-panel);
+        }
+
+        .protocol-header {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--bg-base);
+            padding: 0 10px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* User's Exact Contact Grid HTML Styling */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 15px; }
+            .nav-links { display: none; }
+        }
+
+        .contact-label {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            color: var(--text-white);
+            font-size: 1rem;
+        }
+
+        .contact-value a {
+            color: var(--text-main);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 50px;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
+<body data-theme="dark">
 
-<body>
+    <div class="container">
+        <nav>
+            <div class="logo">RP.SYS</div>
+            <ul class="nav-links">
+                <li><a href="#experience">// EXPERIENCE</a></li>
+                <li><a href="#projects">// PROJECTS</a></li>
+                <li><a href="#skills">// SKILLS</a></li>
+                <li><a href="#contact">// CONTACT</a></li>
+            </ul>
+            <div class="toggle-container" id="themeToggle">
+                <span>Toggle</span>
+                <div class="toggle-switch">
+                    <div class="toggle-dot"></div>
+                </div>
+            </div>
+        </nav>
 
-<nav>
-  <b>Rahul Pratap</b>
-  <span class="toggle" onclick="toggleTheme()">Toggle</span>
-</nav>
+        <header class="hero">
+            <h1>RAHUL PRATAP</h1>
+            <div class="headline">
+                <span class="hl-purple">Data</span> &rarr;
+                <span class="hl-cyan">Decisions</span> &rarr;
+                <span class="hl-green">Impact</span>
+            </div>
+            
+            <div class="stats-row">
+                <div class="stat-box">[ <span>10K+</span> USERS ]</div>
+                <div class="stat-box">[ <span>50K+</span> DATA POINTS ]</div>
+                <div class="stat-box">[ <span>5+</span> DASHBOARDS ]</div>
+            </div>
+        </header>
 
-<!-- HERO -->
-<section class="hero">
+        <section class="section" id="experience">
+            <h2 class="section-title">EXECUTE: EXPERIENCE.LOG</h2>
+            
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">Business Operation Analyst @ Commerce Teachers' Foundation</span>
+                    <span class="card-date">Jun 2025 - Present</span>
+                </div>
+                <div class="card-body">
+                    > Optimizing national Olympiad logistics across 500+ schools.<br>
+                    > Managing datasets for 50,000+ participants.<br>
+                    > Developed automated Power BI reports, reducing manual entry by 40%.
+                </div>
+            </div>
 
-<h1>Rahul Pratap</h1>
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">Operations Associate @ Pravartee Sales Pvt. Ltd.</span>
+                    <span class="card-date">Feb 2025 - May 2025</span>
+                </div>
+                <div class="card-body">
+                    > Maintained high L1 rankings for key catalogs on GeM portal.<br>
+                    > Generated daily MIS reporting and inventory tracking via Advanced Excel.
+                </div>
+            </div>
+        </section>
 
-<h2>Business Operations Analyst | Data Analytics | Power BI | Excel | SQL</h2>
+        <section class="section" id="projects">
+            <h2 class="section-title">MOUNT: PROJECTS.DIR</h2>
 
-<p>
-Transforming operational data into actionable insights, optimizing workflows, and enabling data-driven decision-making.
-</p>
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">BOB Sales & Asset Performance Analysis</span>
+                </div>
+                <div class="card-body">
+                    > Strategic analysis of banking assets highlighting 89% dominance in CRA/ATM sectors.<br>
+                    > Tracked ATM usage peaks to 85% and optimized maintenance spend.
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">POWER BI</span> <span class="tag">SQL</span> <span class="tag">EXCEL</span>
+                </div>
+            </div>
 
-<p style="color:var(--muted)">
-Managed 10,000+ users • Analyzed 50,000+ data points • Built 5+ dashboards
-</p>
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">Global Store Analysis</span>
+                </div>
+                <div class="card-body">
+                    > Comprehensive sales tracking and forecasting for multi-region retail stores.
+                </div>
+                <a href="https://github.com/rahulstats-analyst/Excel-Global_Store_Data_Analysis.git" target="_blank" class="btn-link">[ VIEW REPO ]</a>
+            </div>
 
-<div class="metrics">
-  <div><b>10K+</b><br>Users</div>
-  <div><b>50K+</b><br>Data Points</div>
-  <div><b>5+</b><br>Dashboards</div>
-</div>
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">Music Store Analytics</span>
+                </div>
+                <div class="card-body">
+                    > Deep dive into customer demographics using complex SQL joins and aggregations.
+                </div>
+                <a href="https://github.com/rahulstats-analyst/Music_Store_Analysis_Project.git" target="_blank" class="btn-link">[ VIEW REPO ]</a>
+            </div>
+            
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span class="card-title">Personal Finance Analytics Dashboard</span>
+                </div>
+                <div class="card-body">
+                    > Personalized tool visualizing budget allocation and expense tracking.
+                </div>
+                <a href="https://github.com/rahulstats-analyst/PERSONAL-FINANCE-ANALYTICS-DASHBOARD.git" target="_blank" class="btn-link">[ VIEW REPO ]</a>
+            </div>
+        </section>
 
-</section>
+        <section class="section" id="contact">
+            <h2 class="section-title">INIT: CONTACT_PROTOCOL</h2>
+            
+            <div class="contact-protocol">
+                <div class="protocol-header">
+                    &#128269; INITIALIZE_CONTACT_PROTOCOL
+                </div>
+                
+                <p style="color: var(--text-dim); margin-bottom: 20px;">
+                    // Value propositions:<br>
+                    Business Operations Analyst specializing in data analytics, MIS reporting, and dashboard-driven decision making. Trusted to manage large user bases and analyze complex data points across operations.<br><br>
+                    // Re-formatted contact grid:
+                </p>
 
-<!-- EXPERIENCE -->
-<section class="section">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-label">EMAIL</div>
+                        <div class="contact-value">
+                            <a href="mailto:rahul.15pratap@gmail.com">rahul.15pratap@gmail.com</a>
+                        </div>
+                    </div>
 
-<h2>Experience</h2>
+                    <div class="contact-item">
+                        <div class="contact-label">LINKEDIN</div>
+                        <div class="contact-value">
+                            <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">
+                                /rahul-pratap-175276264
+                            </a>
+                        </div>
+                    </div>
 
-<div class="timeline">
+                    <div class="contact-item">
+                        <div class="contact-label">PHONE</div>
+                        <div class="contact-value">
+                            <a href="tel:+919369549816">+91 936-954-9816</a>
+                        </div>
+                    </div>
 
-<div class="card">
-<h3>Business Operations Analyst</h3>
-<p>Commerce Teachers' Foundation | 2024–Present</p>
-<ul>
-<li>Managed 10,000+ participants across 15+ cities</li>
-<li>Analyzed 50,000+ data points using Excel</li>
-<li>Built Power BI dashboards for KPIs</li>
-<li>Delivered MIS reports to leadership</li>
-</ul>
-</div>
+                    <div class="contact-item">
+                        <div class="contact-label">GITHUB</div>
+                        <div class="contact-value">
+                            <a href="https://github.com/rahulstats-analyst" target="_blank">
+                                /rahulstats-analyst
+                            </a>
+                        </div>
+                    </div>
 
-<div class="card">
-<h3>Operations Associate</h3>
-<p>Pravartee Sales Pvt Ltd | 2024</p>
-<ul>
-<li>Analyzed 500+ transactions monthly</li>
-<li>Optimized workflows and pricing strategies</li>
-</ul>
-</div>
+                    <div class="contact-item">
+                        <div class="contact-label">LOCATION</div>
+                        <div class="contact-value">Ghaziabad, UP, India</div>
+                    </div>
 
-</div>
+                    <div class="contact-item">
+                        <div class="contact-label">AVAILABILITY</div>
+                        <div class="contact-value">Immediate - 15 Days</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</section>
+        <footer>
+            <div class="footer-text">
+                © 2026 RAHUL PRATAP // DESIGNED FOR IMPACT // BUILT WITH DATA
+            </div>
+        </footer>
 
-<!-- PROJECTS -->
-<section class="section">
+    </div>
 
-<h2>Projects</h2>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
 
-<div class="card">
-<h3>Global Store Data Analysis</h3>
-<p>Identified high-performing regions and product categories.</p>
-</div>
+        // Check Local Storage
+        const currentTheme = localStorage.getItem('rp-sys-theme') || 'dark';
+        body.setAttribute('data-theme', currentTheme);
 
-<div class="card">
-<h3>Music Store SQL Analysis</h3>
-<p>Analyzed customer behavior and revenue trends.</p>
-</div>
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('rp-sys-theme', newTheme);
+        });
 
-<div class="card">
-<h3>Personal Finance Dashboard</h3>
-<p>Tracked income, expenses, and savings insights.</p>
-</div>
-
-<div class="card">
-<h3>BOB ATM Analysis</h3>
-<p>Analyzed ATM performance, revenue patterns, and cost efficiency.</p>
-</div>
-
-</section>
-
-<!-- EDUCATION -->
-<section class="section">
-
-<h2>Education</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>B.Tech Electrical Engineering</h3>
-<p>Dr. APJ Abdul Kalam Technical University</p>
-<p>2019 – 2023</p>
-</div>
-
-<div class="card">
-<h3>Higher Secondary (CBSE)</h3>
-<p>Science Stream | 2018</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-<section class="section">
-
-<h2>Skills</h2>
-
-<div class="grid">
-<div class="card">Excel • Power BI • SQL • Python</div>
-<div class="card">MIS Reporting • KPI Tracking</div>
-<div class="card">Process Optimization</div>
-<div class="card">Business Analytics</div>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-
-<div class="contact">
-
-<p class="terminal-tag">// INITIALIZE_CONTACT_PROTOCOL</p>
-
-<h2 class="section-title">Let's Build Something</h2>
-
-<p class="contact-desc">
-Open to full-time roles, freelance projects, and collaborations. Available immediately 
-with flexibility to relocate across India.
-</p>
-
-<div class="contact-grid">
-
-<div>
-<div class="contact-label">EMAIL</div>
-<div class="contact-value">
-<a href="mailto:rahul.15pratap@gmail.com">rahul.15pratap@gmail.com</a>
-</div>
-</div>
-
-<div>
-<div class="contact-label">PHONE</div>
-<div class="contact-value">
-<a href="tel:+919369549816">+91 936-954-9816</a>
-</div>
-</div>
-
-<div>
-<div class="contact-label">LINKEDIN</div>
-<div class="contact-value">
-<a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">
-/rahul-pratap-175276264
-</a>
-</div>
-</div>
-
-<div>
-<div class="contact-label">GITHUB</div>
-<div class="contact-value">
-<a href="https://github.com/rahulstats-analyst" target="_blank">
-/rahulstats-analyst
-</a>
-</div>
-</div>
-
-<div>
-<div class="contact-label">LOCATION</div>
-<div class="contact-value">Ghaziabad, UP, India</div>
-</div>
-
-<div>
-<div class="contact-label">AVAILABILITY</div>
-<div class="contact-value highlight">Immediate - 15 Days</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 Rahul Pratap // Designed for Impact
-</footer>
-
-<script>
-function toggleTheme(){
-  document.body.classList.toggle("light");
-  localStorage.setItem("theme",
-    document.body.classList.contains("light")?"light":"dark");
-}
-
-window.onload=function(){
-  if(localStorage.getItem("theme")==="light"){
-    document.body.classList.add("light");
-  }
-}
-</script>
-
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
