@@ -1,274 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Pratap | Business Operation Analyst</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent: #2563eb;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Pratap | Data & Operations Analyst</title>
 
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --card-bg: #1e293b;
-            --border: #334155;
-            --nav-bg: rgba(15, 23, 42, 0.9);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-main); line-height: 1.6; }
-        .container { max-width: 1050px; margin: 0 auto; padding: 0 2rem; }
-        
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; }
-        .nav-content { height: 75px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem; }
-        
-        /* Theme Toggle Custom Switch */
-        .theme-toggle { cursor: pointer; display: flex; align-items: center; gap: 10px; background: var(--bg-secondary); border: 1px solid var(--border); padding: 6px 16px; border-radius: 30px; }
+<style>
+:root{
+  --bg:#05070d;
+  --text:#fff;
+  --muted:#9aa0a6;
+  --accent:#7f5af0;
+  --accent2:#2cb67d;
+  --card:rgba(255,255,255,0.05);
+}
 
-        /* Hero Section */
-        .hero { padding: 8rem 0 4rem; display: flex; flex-direction: column; justify-content: center; }
-        .badge { display: inline-block; background: var(--accent); color: white; padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
-        .accent-text { color: var(--accent); }
+.light{
+  --bg:#f8f9fb;
+  --text:#111;
+  --muted:#555;
+  --card:#fff;
+}
 
-        /* Sections */
-        section { padding: 5rem 0; }
-        h2 { font-size: 1.75rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; }
-        h2::after { content: ''; height: 2px; flex-grow: 1; background: var(--border); }
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
 
-        /* Experience & Education */
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; position: relative; }
-        .card-header { display: flex; justify-content: space-between; margin-bottom: 1rem; }
-        .role-title { font-size: 1.2rem; font-weight: 700; }
-        .company { color: var(--accent); font-weight: 600; }
-        .date { font-size: 0.9rem; color: var(--text-muted); }
-        ul { list-style: none; margin-top: 1rem; }
-        li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: var(--text-muted); }
-        li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:1rem 3rem;
+  position:fixed;
+  width:100%;
+  backdrop-filter:blur(10px);
+}
 
-        /* Projects Grid */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-        .project-img { width: 100%; height: 210px; object-fit: cover; }
-        .project-content { padding: 1.5rem; flex-grow: 1; }
-        .project-tags { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
-        .tag { font-size: 0.7rem; background: var(--bg-secondary); padding: 4px 10px; border-radius: 4px; font-weight: 600; text-transform: uppercase; }
+.toggle{
+  cursor:pointer;
+  padding:6px 12px;
+  border-radius:20px;
+  background:var(--accent);
+  color:#fff;
+}
 
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
-        .skill-item { background: var(--bg-secondary); padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600; border: 1px solid var(--border); }
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 3rem;
+}
 
-        footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-muted); }
+.hero h1{
+  font-size:4rem;
+}
 
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .nav-links { display: none; } .card-header { flex-direction: column; gap: 5px; } }
-    </style>
+.gradient{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.metrics{
+  display:flex;
+  gap:40px;
+  margin-top:30px;
+}
+
+.metric h2{
+  color:var(--accent2);
+}
+
+/* SECTION */
+section{
+  padding:5rem 3rem;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  padding:2rem;
+  border-radius:16px;
+  margin-top:1.5rem;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+}
+
+/* TIMELINE */
+.timeline{
+  border-left:2px solid var(--accent);
+  padding-left:20px;
+}
+
+.timeline-item{
+  margin-bottom:30px;
+}
+
+/* EDUCATION */
+.edu-card{
+  border-left:4px solid var(--accent2);
+}
+
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 20px;
+  border-radius:25px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+}
+
+footer{
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+}
+</style>
 </head>
-<body data-theme="light">
 
-    <nav>
-        <div class="container nav-content">
-            <div style="font-weight: 900; letter-spacing: -1px; font-size: 1.4rem;">RP.</div>
-            <ul class="nav-links">
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-            </ul>
-            <div class="theme-toggle" id="themeBtn">
-                <i class="fas fa-moon"></i>
-                <span style="font-weight: 600; font-size: 0.85rem;" id="themeText">Dark Mode</span>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <header class="container hero" id="about">
-        <div class="badge">Available for Projects</div>
-        <h1>I'm Rahul Pratap, a <span class="accent-text">Business Operation Analyst</span>.</h1>
-        <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 750px; margin-bottom: 2.5rem;">
-            I specialize in optimizing business workflows through data-driven insights. From managing large-scale 
-            Olympiad operations to building strategic dashboards in Power BI and SQL.
-        </p>
-        <div style="display: flex; gap: 1.5rem; align-items: center;">
-            <a href="https://www.linkedin.com/in/rahul-pratap-175276264/" target="_blank" style="font-size: 1.5rem; color: var(--text-main);"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/rahulstats-analyst" target="_blank" style="font-size: 1.5rem; color: var(--text-main);"><i class="fab fa-github"></i></a>
-            <a href="mailto:your-email@example.com" style="background: var(--accent); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700;">Get In Touch</a>
-        </div>
-    </header>
+<nav>
+  <b>Rahul Pratap</b>
+  <span class="toggle" onclick="toggleTheme()">Toggle Mode</span>
+</nav>
 
-    <section id="experience" class="container">
-        <h2>Experience</h2>
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <div class="role-title">Business Operation Analyst</div>
-                    <div class="company">Commerce Teachers' Foundation (CTF)</div>
-                </div>
-                <div class="date">June 2025 — Present</div>
-            </div>
-            <ul>
-                <li>Optimizing national Olympiad logistics across 500+ schools, managing data for 50,000+ participants.</li>
-                <li>Developed automated Power BI reports to reduce manual data entry by 40%.</li>
-                <li>Leading school onboarding initiatives and departmental communication workflows.</li>
-            </ul>
-        </div>
+<!-- HERO -->
+<section class="hero">
+<h1><span class="gradient">Data → Decisions → Impact</span></h1>
 
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <div class="role-title">Operations Associate</div>
-                    <div class="company">Pravartee Sales Pvt. Ltd.</div>
-                </div>
-                <div class="date">Feb 2025 — May 2025</div>
-            </div>
-            <ul>
-                <li>Analyzed sales performance on the GeM portal, maintaining high L1 rankings for key catalogs.</li>
-                <li>Daily MIS reporting and inventory tracking using Advanced Excel and VLOOKUP automation.</li>
-            </ul>
-        </div>
-    </section>
+<p>
+Business Operations Analyst specializing in data analytics, MIS reporting, and dashboard-driven decision making.
+</p>
 
-    <section id="projects" class="container">
-        <h2>Strategic Projects</h2>
-        <div class="project-grid">
-            
-            <div class="project-card" style="grid-column: span 2;">
-                <img src="https://media.licdn.com/dms/image/v2/D562DAQF74s7w6ER-IQ/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1727781796795?e=1778000400&v=beta&t=1Eozs4hOcvenSP9arCmeG5KgE8TzWN7LzdCKu93wfug" alt="BOB Dashboard" class="project-img">
-                <div class="project-content">
-                    <div class="project-tags">
-                        <span class="tag">Power BI</span> <span class="tag">Banking Analysis</span> <span class="tag">Strategic Insights</span>
-                    </div>
-                    <h3>BOB Sales & Asset Performance Analysis</h3>
-                    <p style="color: var(--text-muted); margin: 1rem 0;">
-                        Analysis of banking assets showing 89% dominance in CRA/ATM sectors. Key findings included tracking 
-                        ATM usage peaks at 85% in December and optimizing maintenance spend (2% allocation).
-                    </p>
-                    <a href="https://www.linkedin.com/in/rahul-pratap-175276264/" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: none;">View Full Insights →</a>
-                </div>
-            </div>
+<p style="color:var(--muted)">
+Trusted to manage 10,000+ users and analyze 50,000+ data points across multi-city operations.
+</p>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <div class="project-tags"><span class="tag">Excel</span> <span class="tag">Analytics</span></div>
-                    <h3>Global Store Analysis</h3>
-                    <p>Comprehensive sales tracking and forecasting for multi-region retail stores.</p>
-                    <a href="https://github.com/rahulstats-analyst/Excel-Global_Store_Data_Analysis.git" class="accent-text" style="display: block; margin-top: 1rem; font-weight: 600;">GitHub Repo</a>
-                </div>
-            </div>
+<div class="metrics">
+  <div class="metric"><h2>10K+</h2><p>Users</p></div>
+  <div class="metric"><h2>50K+</h2><p>Data Points</p></div>
+  <div class="metric"><h2>5+</h2><p>Dashboards</p></div>
+</div>
+</section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <div class="project-tags"><span class="tag">SQL</span> <span class="tag">PostgreSQL</span></div>
-                    <h3>Music Store Project</h3>
-                    <p>Deep dive into customer demographics and genre preferences using complex SQL joins.</p>
-                    <a href="https://github.com/rahulstats-analyst/Music_Store_Analysis_Project.git" class="accent-text" style="display: block; margin-top: 1rem; font-weight: 600;">GitHub Repo</a>
-                </div>
-            </div>
+<!-- EXPERIENCE -->
+<section>
+<h2>Experience</h2>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <div class="project-tags"><span class="tag">Power BI</span> <span class="tag">Finance</span></div>
-                    <h3>Personal Finance Dashboard</h3>
-                    <p>Visualizing budget allocation and expense tracking for holistic financial management.</p>
-                    <a href="https://github.com/rahulstats-analyst/PERSONAL-FINANCE-ANALYTICS-DASHBOARD.git" class="accent-text" style="display: block; margin-top: 1rem; font-weight: 600;">GitHub Repo</a>
-                </div>
-            </div>
+<div class="timeline">
 
-        </div>
-    </section>
+<div class="timeline-item card">
+<h3>Business Operations Analyst</h3>
+<p>Commerce Teachers' Foundation | 2024–Present</p>
+<ul>
+<li>Managed 10,000+ participants across 15+ cities</li>
+<li>Analyzed 50,000+ data points using Excel</li>
+<li>Built 5+ Power BI dashboards for KPIs</li>
+<li>Delivered MIS reports to leadership</li>
+<li>Handled onboarding of 200+ schools</li>
+</ul>
+</div>
 
-    <section id="education" class="container">
-        <h2>Education</h2>
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <div class="role-title">B.Tech in Electrical Engineering</div>
-                    <div class="company">A.K.T.U. | GPA: 7.26</div>
-                </div>
-                <div class="date">2019 — 2023</div>
-            </div>
-            <p style="color: var(--text-muted);">Developed foundational skills in quantitative analysis, logical reasoning, and complex problem-solving.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div class="card" style="padding: 1.5rem;">
-                <div class="role-title" style="font-size: 1rem;">Intermediate</div>
-                <div class="company">Rampus School | 2018</div>
-            </div>
-            <div class="card" style="padding: 1.5rem;">
-                <div class="role-title" style="font-size: 1rem;">High School</div>
-                <div class="company">Rampus School | 2016</div>
-            </div>
-        </div>
-    </section>
+<div class="timeline-item card">
+<h3>Operations Associate</h3>
+<p>Pravartee Sales Pvt Ltd | 2024</p>
+<ul>
+<li>Analyzed 500+ transactions monthly</li>
+<li>Optimized pricing and workflows</li>
+<li>Built reporting dashboards</li>
+</ul>
+</div>
 
-    <section id="skills" class="container">
-        <h2>Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-item">Power BI</div>
-            <div class="skill-item">Advanced Excel</div>
-            <div class="skill-item">SQL (Basic)</div>
-            <div class="skill-item">MIS Reporting</div>
-            <div class="skill-item">Process Optimization</div>
-            <div class="skill-item">Operational Strategy</div>
-        </div>
-    </section>
+</div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Rahul Pratap | Business Operation Analyst Portfolio</p>
-    </footer>
+<!-- PROJECTS -->
+<section>
+<h2>Projects</h2>
 
-    <script>
-        const themeBtn = document.getElementById('themeBtn');
-        const themeText = document.getElementById('themeText');
-        const icon = themeBtn.querySelector('i');
-        const body = document.body;
+<div class="card">
+<h3>Global Store Data Analysis</h3>
+<p><b>Impact:</b> Identified high-performing regions & product categories</p>
+<a href="https://github.com/rahulstats-analyst/Excel-Global_Store_Data_Analysis.git" target="_blank" class="btn">View</a>
+</div>
 
-        themeBtn.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'light') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        });
+<div class="card">
+<h3>Music Store SQL Analysis</h3>
+<p><b>Impact:</b> Discovered customer revenue patterns & top segments</p>
+<a href="https://github.com/rahulstats-analyst/Music_Store_Analysis_Project.git" target="_blank" class="btn">View</a>
+</div>
 
-        function setTheme(theme) {
-            body.setAttribute('data-theme', theme);
-            localStorage.setItem('portfolio-theme', theme);
-            if (theme === 'dark') {
-                icon.className = 'fas fa-sun';
-                themeText.innerText = 'Light Mode';
-            } else {
-                icon.className = 'fas fa-moon';
-                themeText.innerText = 'Dark Mode';
-            }
-        }
+<div class="card">
+<h3>Personal Finance Dashboard</h3>
+<p><b>Impact:</b> Enabled structured expense & savings tracking</p>
+<a href="https://github.com/rahulstats-analyst/PERSONAL-FINANCE-ANALYTICS-DASHBOARD.git" target="_blank" class="btn">View</a>
+</div>
 
-        // Initialize theme from storage
-        const currentTheme = localStorage.getItem('portfolio-theme') || 'light';
-        setTheme(currentTheme);
+<div class="card">
+<h3>BOB Sales & ATM Analysis</h3>
+<p><b>Impact:</b> Identified 89% asset concentration & revenue trends</p>
+<a href="https://media.licdn.com/dms/image/v2/D562DAQF74s7w6ER-IQ/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1727781796795?e=1778000400&v=beta&t=1Eozs4hOcvenSP9arCmeG5KgE8TzWN7LzdCKu93wfug" target="_blank" class="btn">View</a>
+</div>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+</section>
+
+<!-- EDUCATION -->
+<section>
+<h2>Education</h2>
+
+<div class="grid">
+
+<div class="card edu-card">
+<h3>B.Tech – Electrical Engineering</h3>
+<p>Dr. APJ Abdul Kalam Technical University</p>
+<p>2019 – 2023</p>
+<p>Strong foundation in analytical problem-solving and systems thinking.</p>
+</div>
+
+<div class="card edu-card">
+<h3>Higher Secondary (CBSE)</h3>
+<p>Science Stream | 2018</p>
+<p>Focused on mathematics and logical reasoning.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2>Core Skills</h2>
+
+<div class="grid">
+<div class="card">Excel • Power BI • SQL • Python</div>
+<div class="card">MIS Reporting • KPI Tracking</div>
+<div class="card">Process Optimization</div>
+<div class="card">Business Analytics</div>
+</div>
+
+</section>
+
+<footer>
+© 2026 Rahul Pratap | Portfolio
+</footer>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  localStorage.setItem("theme",
+    document.body.classList.contains("light") ? "light":"dark");
+}
+
+window.onload=function(){
+  if(localStorage.getItem("theme")==="light"){
+    document.body.classList.add("light");
+  }
+}
+</script>
+
 </body>
 </html>
