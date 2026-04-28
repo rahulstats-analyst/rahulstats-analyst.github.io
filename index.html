@@ -1,569 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Pratap | Data Analyst & Statistician</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS VARIABLES FOR LIGHT/DARK MODE */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
 
-<title>Rahul Pratap | Data & Operations Analyst</title>
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+            --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-<style>
-:root{
-  --bg:#05070d;
-  --accent:#7f5af0;
-  --accent2:#2cb67d;
-  --text:#fff;
-  --muted:#9aa0a6;
-}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-/* CURSOR */
-.cursor{
-  width:20px;
-  height:20px;
-  border:2px solid var(--accent);
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-}
+        ul {
+            list-style: none;
+        }
 
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
-  padding:1rem 3rem;
-  display:flex;
-  justify-content:space-between;
-  z-index:100;
-}
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 3rem;
-}
+        section {
+            padding: 5rem 0;
+        }
 
-.hero h1{
-  font-size:4.5rem;
-  line-height:1.1;
-}
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
 
-.gradient{
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
-}
+        .nav-content {
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* METRICS COUNTER */
-.metrics{
-  display:flex;
-  gap:40px;
-  margin-top:40px;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
 
-.metric h2{
-  font-size:2.5rem;
-  color:var(--accent2);
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-/* SECTIONS */
-section{
-  padding:6rem 3rem;
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-/* GLASS CARD */
-.card{
-  background:rgba(255,255,255,0.04);
-  padding:2rem;
-  border-radius:20px;
-  margin-top:1.5rem;
-  backdrop-filter:blur(10px);
-  transition:0.4s;
-}
+        /* THEME TOGGLE SWITCH */
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            padding: 5px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
 
-.card:hover{
-  transform:scale(1.05);
-}
+        .theme-switch i {
+            padding: 5px 8px;
+            border-radius: 50%;
+        }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:2rem;
-}
+        .active-theme {
+            background: var(--accent);
+            color: white;
+        }
 
-/* TIMELINE */
-.timeline{
-  border-left:2px solid var(--accent);
-  padding-left:20px;
-}
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, var(--bg-secondary), var(--bg-primary));
+        }
 
-.timeline-item{
-  margin-bottom:40px;
-}
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
 
-/* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:12px 28px;
-  border-radius:30px;
-  background:var(--accent);
-  text-decoration:none;
-  color:white;
-}
+        .hero-content h1 span {
+            color: var(--accent);
+        }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:2rem;
-  color:var(--muted);
-}
-</style>
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .social-btns {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* EDUCATION SECTION (Detailed) */
+        .edu-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .edu-item {
+            border-left: 3px solid var(--accent);
+            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .edu-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .edu-school {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .edu-details {
+            font-size: 0.95rem;
+        }
+
+        .edu-details ul {
+            margin-top: 0.5rem;
+            list-style: disc;
+            margin-left: 1.5rem;
+        }
+
+        /* PROJECTS GRID */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* SKILLS */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-pill {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
-
-<body>
-
-<div class="cursor"></div>
-
-<nav>
-  <b>Rahul Pratap</b>
-  <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">LinkedIn</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-<h1>
-<span class="gradient">Data → Decisions → Impact</span>
-</h1>
-
-<p>
-I transform raw operational data into scalable systems, dashboards, and business insights.
-</p>
-
-<div class="metrics">
-  <div class="metric">
-    <h2 id="m1">0</h2>
-    <p>Users Managed</p>
-  </div>
-
-  <div class="metric">
-    <h2 id="m2">0</h2>
-    <p>Data Points</p>
-  </div>
-
-  <div class="metric">
-    <h2 id="m3">0</h2>
-    <p>Dashboards</p>
-  </div>
-</div>
-
-<a href="#experience" class="btn">Explore Work</a>
-
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-
-<h2>Experience</h2>
-
-<div class="timeline">
-
-<div class="timeline-item card">
-<h3>Business Operations Analyst</h3>
-<p>Commerce Teachers' Foundation | 2024–Present</p>
-
-<ul>
-<li>Handled 10,000+ participants across 15+ cities</li>
-<li>Processed 50,000+ data points using Excel automation</li>
-<li>Built 5+ Power BI dashboards for real-time KPIs</li>
-<li>Delivered MIS reports influencing leadership decisions</li>
-<li>Managed onboarding of 200+ schools</li>
-</ul>
-</div>
-
-<div class="timeline-item card">
-<h3>Operations Associate</h3>
-<p>Pravartee Sales Pvt Ltd | 2024</p>
-
-<ul>
-<li>Analyzed 500+ sales transactions monthly</li>
-<li>Optimized pricing and order workflows</li>
-<li>Built dashboards for operations tracking</li>
-</ul>
-</div>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-<section>
-
-<h2>Capabilities</h2>
-
-<div class="grid">
-
-<div class="card">Excel • Power BI • SQL • Python</div>
-<div class="card">KPI Tracking • MIS • Dashboards</div>
-<div class="card">Process Optimization • Automation</div>
-<div class="card">Business Insights • Strategy</div>
-
-</div>
-
-</section>
-
-<!-- PROJECTS -->
-<section>
-
-<h2>Selected Work</h2>
-
-<div class="card">Sales Dashboard – Revenue & Region Analysis</div>
-<div class="card">SQL Customer Insights – Behavior & Trends</div>
-<div class="card">Finance Tracker – Power BI Visualization</div>
-
-</section>
-
-<footer>
-© 2026 Rahul Pratap — Designed to Stand Out
-</footer>
-
-<script>
-
-/* CUSTOM CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-  cursor.style.left=e.clientX+"px";
-  cursor.style.top=e.clientY+"px";
-});
-
-/* COUNTER ANIMATION */
-function animate(id,end){
-  let obj=document.getElementById(id);
-  let count=0;
-  let interval=setInterval(()=>{
-    count+=Math.ceil(end/50);
-    if(count>=end){
-      count=end;
-      clearInterval(interval);
-    }
-    obj.innerText=count+"+";
-  },40);
-}
-
-window.onload=()=>{
-  animate("m1",10000);
-  animate("m2",50000);
-  animate("m3",5);
-};
-
-/* GSAP INTRO */
-gsap.from(".hero h1",{y:100,opacity:0,duration:1});
-gsap.from(".hero p",{y:50,opacity:0,duration:1,delay:0.3});
-gsap.from(".metric",{opacity:0,stagger:0.2,delay:0.6});
-
-/* SCROLL REVEAL */
-gsap.utils.toArray("section").forEach(sec=>{
-  gsap.from(sec,{
-    opacity:0,
-    y:80,
-    duration:1,
-    scrollTrigger:{
-      trigger:sec,
-      start:"top 80%"
-    }
-  });
-});
-
-</script>
-
-</body>
-</html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Rahul Pratap | Operations & Data Analyst</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --bg:#05070d;
-  --accent:#7f5af0;
-  --glass:rgba(255,255,255,0.05);
-  --text:#ffffff;
-  --muted:#9aa0a6;
-}
-
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
-  padding:1rem 3rem;
-  display:flex;
-  justify-content:space-between;
-  backdrop-filter:blur(10px);
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 3rem;
-}
-
-.hero h1{
-  font-size:4.5rem;
-  font-weight:800;
-  line-height:1.1;
-}
-
-.gradient{
-  background:linear-gradient(90deg,#7f5af0,#2cb67d);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-.hero p{
-  max-width:600px;
-  color:var(--muted);
-  margin-top:20px;
-  font-size:1.1rem;
-}
-
-/* METRICS */
-.metrics{
-  display:flex;
-  gap:40px;
-  margin-top:30px;
-}
-
-.metric h2{
-  font-size:2rem;
-  color:#2cb67d;
-}
-
-/* BUTTON */
-.btn{
-  margin-top:30px;
-  display:inline-block;
-  padding:12px 28px;
-  border-radius:30px;
-  background:var(--accent);
-  text-decoration:none;
-  color:white;
-}
-
-/* SECTION */
-section{
-  padding:5rem 3rem;
-}
-
-/* CARDS */
-.card{
-  background:var(--glass);
-  padding:2rem;
-  border-radius:16px;
-  margin-top:1.5rem;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:2rem;
-}
-
-/* EXPERIENCE TIMELINE */
-.timeline{
-  border-left:2px solid var(--accent);
-  padding-left:20px;
-}
-
-.timeline-item{
-  margin-bottom:30px;
-}
-
-.timeline-item h3{
-  margin:0;
-}
-
-.timeline-item span{
-  color:var(--muted);
-  font-size:0.9rem;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:2rem;
-  color:var(--muted);
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-  <b>Rahul Pratap</b>
-  <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">LinkedIn</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-<h1>
-Turning <span class="gradient">Data into Business Decisions</span>
-</h1>
-
-<p>
-Business Operations Analyst specializing in large-scale operations, MIS reporting, and dashboard-driven decision making.
-</p>
-
-<div class="metrics">
-  <div class="metric">
-    <h2>10,000+</h2>
-    <p>Users Managed</p>
-  </div>
-
-  <div class="metric">
-    <h2>50,000+</h2>
-    <p>Data Points Analyzed</p>
-  </div>
-
-  <div class="metric">
-    <h2>5+</h2>
-    <p>Dashboards Built</p>
-  </div>
-</div>
-
-<a href="#experience" class="btn">View Experience</a>
-
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-
-<h2>Experience</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h3>Business Operations Analyst</h3>
-<span>Commerce Teachers' Foundation | 2024 – Present</span>
-
-<ul>
-<li>Managed national-level Olympiads across 15+ cities with 10,000+ participants</li>
-<li>Analyzed 50,000+ data records using Excel (VLOOKUP, Pivot, Macros)</li>
-<li>Built 5+ Power BI dashboards for KPIs, revenue & trends</li>
-<li>Delivered weekly MIS reports to leadership</li>
-<li>Handled 200+ school partnerships and onboarding</li>
-</ul>
-</div>
-
-<div class="timeline-item">
-<h3>Operations Associate</h3>
-<span>Pravartee Sales Pvt Ltd | 2024</span>
-
-<ul>
-<li>Analyzed 500+ sales transactions monthly</li>
-<li>Improved pricing and product performance insights</li>
-<li>Streamlined order processing and logistics tracking</li>
-<li>Built reporting dashboards for operations tracking</li>
-</ul>
-</div>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-<section>
-
-<h2>Core Skills</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Data & BI</h3>
-<p>Excel, Power BI, SQL, Python</p>
-</div>
-
-<div class="card">
-<h3>Operations</h3>
-<p>KPI Tracking, MIS Reporting, Process Optimization</p>
-</div>
-
-<div class="card">
-<h3>Analytics</h3>
-<p>Trend Analysis, Dashboarding, Data Cleaning</p>
-</div>
-
-<div class="card">
-<h3>Business</h3>
-<p>Stakeholder Management, Coordination, Strategy</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PROJECTS -->
-<section>
-
-<h2>Projects</h2>
-
-<div class="card">
-<h3>Sales Analytics Dashboard</h3>
-<p>Built interactive dashboards identifying high-performing products and revenue trends.</p>
-</div>
-
-<div class="card">
-<h3>SQL Customer Analysis</h3>
-<p>Analyzed customer behavior and revenue patterns using SQL queries.</p>
-</div>
-
-<div class="card">
-<h3>Finance Tracker (Power BI)</h3>
-<p>Developed personal finance dashboard with DAX-based insights.</p>
-</div>
-
-</section>
-
-<footer>
-© 2026 Rahul Pratap | Built for Impact
-</footer>
-
+<body data-theme="light">
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">RAHUL.STATS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+            <div class="theme-switch" id="themeToggle">
+                <i class="fas fa-sun" id="sunIcon"></i>
+                <i class="fas fa-moon" id="moonIcon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="about">
+        <div class="container hero-content">
+            <h1>Hi, I'm <span>Rahul Pratap</span></h1>
+            <p class="hero-subtitle">Statistical Analyst & Data Visualization Expert</p>
+            <p style="max-width: 600px; margin-bottom: 2rem;">
+                Passionate about turning complex datasets into actionable insights. Expert in statistical modeling, 
+                data cleaning, and digital alignment strategies.
+            </p>
+            <div class="social-btns">
+                <a href="https://github.com/rahulstats-analyst" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/rahul-pratap-175276264/" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div class="edu-card">
+            <div class="edu-item">
+                <div class="edu-header">
+                    <div class="edu-title">B.Sc. in Statistics & Mathematics</div>
+                    <div class="edu-date">2022 — 2026 (Expected)</div>
+                </div>
+                <div class="edu-school">Top Tier Academic Institution</div>
+                <div class="edu-details">
+                    <p>Focusing on the intersection of mathematical theory and practical data application.</p>
+                    <ul>
+                        <li><strong>Core Subjects:</strong> Probability Theory, Linear Algebra, Multivariate Analysis, Applied Statistics.</li>
+                        <li><strong>Technical Training:</strong> Data Structures & Algorithms, Database Management Systems (DBMS).</li>
+                        <li><strong>Honors:</strong> Consistent top performer in quantitative research and computational math.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="edu-item" style="margin-bottom: 0;">
+                <div class="edu-header">
+                    <div class="edu-title">Higher Secondary Education</div>
+                    <div class="edu-date">Completed 2022</div>
+                </div>
+                <div class="edu-school">Science Stream (PCM)</div>
+                <div class="edu-details">
+                    <p>Developed a strong foundation in Physics, Chemistry, and advanced Mathematics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">Digital Alignment</span>
+                            <span class="tag">OMR Processing</span>
+                        </div>
+                        <h3>OMR Layout Alignment System</h3>
+                        <p>Developed a specialized system for alignment and color correction of OMR and digital test layouts. Optimized texture overlay for maximum accuracy in automated grading.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        <h3>Exploratory Data Analysis Tool</h3>
+                        <p>Built a comprehensive EDA dashboard that automates statistical testing (t-tests, ANOVA) and provides automated distribution plotting for raw datasets.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">R Programming</span>
+                            <span class="tag">Visualization</span>
+                        </div>
+                        <h3>Global Trends Forecasting</h3>
+                        <p>A repository dedicated to time-series analysis of socio-economic factors using R and ggplot2. Highlighting correlations between GDP and digital literacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Technical Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-pill">Python (Pandas, NumPy, Scikit-learn)</div>
+            <div class="skill-pill">R Programming</div>
+            <div class="skill-pill">SQL & NoSQL</div>
+            <div class="skill-pill">Tableau & Power BI</div>
+            <div class="skill-pill">Statistical Modeling</div>
+            <div class="skill-pill">Data Cleaning & Wrangling</div>
+            <div class="skill-pill">Microsoft Excel (Advanced)</div>
+            <div class="skill-pill">Digital Layout Alignment</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Rahul Pratap. Designed for Analytics Excellence.</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://github.com/rahulstats-analyst" style="margin: 0 10px;"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/rahul-pratap-175276264/" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // THEME TOGGLE LOGIC
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const body = document.body;
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        updateIcons(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                sunIcon.classList.remove('active-theme');
+                moonIcon.classList.add('active-theme');
+            } else {
+                sunIcon.classList.add('active-theme');
+                moonIcon.classList.remove('active-theme');
+            }
+        }
+
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
