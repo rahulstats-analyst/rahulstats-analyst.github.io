@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul Pratap | Business Operations Analyst</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Rahul Pratap | Operations & Data Analyst</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0b0b0f;
+  --bg:#05070d;
+  --accent:#7f5af0;
   --glass:rgba(255,255,255,0.05);
-  --text:#f5f5f5;
-  --muted:#aaa;
-  --gold:#c9a84c;
+  --text:#ffffff;
+  --muted:#9aa0a6;
 }
 
 body{
   margin:0;
-  font-family:'DM Sans';
+  font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
+  overflow-x:hidden;
 }
 
 /* NAV */
 nav{
   position:fixed;
   width:100%;
+  padding:1rem 3rem;
   display:flex;
   justify-content:space-between;
-  padding:1rem 2rem;
   backdrop-filter:blur(10px);
 }
 
@@ -39,13 +41,17 @@ nav{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:2rem;
+  padding:0 3rem;
 }
 
 .hero h1{
-  font-family:'Syne';
-  font-size:4rem;
-  background:linear-gradient(90deg,#fff,var(--gold));
+  font-size:4.5rem;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#7f5af0,#2cb67d);
   -webkit-background-clip:text;
   color:transparent;
 }
@@ -53,39 +59,49 @@ nav{
 .hero p{
   max-width:600px;
   color:var(--muted);
-  line-height:1.6;
-  margin-top:10px;
+  margin-top:20px;
+  font-size:1.1rem;
+}
+
+/* METRICS */
+.metrics{
+  display:flex;
+  gap:40px;
+  margin-top:30px;
+}
+
+.metric h2{
+  font-size:2rem;
+  color:#2cb67d;
 }
 
 /* BUTTON */
 .btn{
-  padding:10px 20px;
-  border:1px solid var(--gold);
+  margin-top:30px;
   display:inline-block;
-  margin-top:15px;
+  padding:12px 28px;
+  border-radius:30px;
+  background:var(--accent);
   text-decoration:none;
   color:white;
-}
-.btn:hover{
-  background:var(--gold);
-  color:black;
 }
 
 /* SECTION */
 section{
-  padding:4rem 2rem;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
+  padding:5rem 3rem;
 }
 
-/* CARD */
+/* CARDS */
 .card{
   background:var(--glass);
-  padding:1.5rem;
-  margin-top:1rem;
-  border-radius:12px;
-  backdrop-filter:blur(10px);
+  padding:2rem;
+  border-radius:16px;
+  margin-top:1.5rem;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
 }
 
 /* GRID */
@@ -95,14 +111,30 @@ section{
   gap:2rem;
 }
 
-ul{
-  padding-left:18px;
-  line-height:1.6;
+/* EXPERIENCE TIMELINE */
+.timeline{
+  border-left:2px solid var(--accent);
+  padding-left:20px;
 }
 
+.timeline-item{
+  margin-bottom:30px;
+}
+
+.timeline-item h3{
+  margin:0;
+}
+
+.timeline-item span{
+  color:var(--muted);
+  font-size:0.9rem;
+}
+
+/* FOOTER */
 footer{
   text-align:center;
   padding:2rem;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -110,168 +142,134 @@ footer{
 <body>
 
 <nav>
-  <div><b>Rahul Pratap</b></div>
-  <div>
-    <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">LinkedIn</a>
-  </div>
+  <b>Rahul Pratap</b>
+  <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">LinkedIn</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-<h1 id="name"></h1>
+
+<h1>
+Turning <span class="gradient">Data into Business Decisions</span>
+</h1>
 
 <p>
-Business Operations Analyst delivering insights through Excel, SQL, and Power BI.
+Business Operations Analyst specializing in large-scale operations, MIS reporting, and dashboard-driven decision making.
 </p>
 
-<!-- 🔥 ADDED POSITIONING STATEMENT -->
-<p>
-Helping businesses identify revenue opportunities, optimize operations, and make faster, data-driven decisions.
-</p>
+<div class="metrics">
+  <div class="metric">
+    <h2>10,000+</h2>
+    <p>Users Managed</p>
+  </div>
 
-<a href="#projects" class="btn">View Work</a>
-</section>
+  <div class="metric">
+    <h2>50,000+</h2>
+    <p>Data Points Analyzed</p>
+  </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-<h2>Projects</h2>
-
-<div class="card">
-<h3>Global Store Data Analysis</h3>
-<ul>
-<li><b>Problem:</b> Limited visibility into sales performance</li>
-<li><b>Action:</b> Built Excel dashboards using PivotTables and slicers</li>
-<li><b>Impact:</b> Identified high-performing regions and profitable product categories</li>
-</ul>
+  <div class="metric">
+    <h2>5+</h2>
+    <p>Dashboards Built</p>
+  </div>
 </div>
 
-<div class="card">
-<h3>Music Store SQL Analysis</h3>
-<ul>
-<li><b>Problem:</b> No clarity on customer revenue patterns</li>
-<li><b>Action:</b> Wrote SQL queries (joins, aggregations)</li>
-<li><b>Impact:</b> Discovered top customers and key revenue trends</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Personal Finance Dashboard</h3>
-<ul>
-<li><b>Problem:</b> Unstructured financial tracking</li>
-<li><b>Action:</b> Built Power BI dashboard with DAX measures</li>
-<li><b>Impact:</b> Enabled tracking of expenses, income, and investments</li>
-</ul>
-</div>
+<a href="#experience" class="btn">View Experience</a>
 
 </section>
 
 <!-- EXPERIENCE -->
-<section>
+<section id="experience">
+
 <h2>Experience</h2>
 
-<div class="card">
-<h3>Business Operations Analyst — Project-Based</h3>
-<p>2024 — Present</p>
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>Business Operations Analyst</h3>
+<span>Commerce Teachers' Foundation | 2024 – Present</span>
 
 <ul>
-<li>Analyzed multi-region retail datasets (10K+ records) to identify revenue drivers and performance gaps</li>
-
-<li>Built interactive dashboards in Excel & Power BI, improving reporting efficiency and visibility</li>
-
-<li>Developed SQL queries (joins, aggregations) to extract insights on customer behavior and sales trends</li>
-
-<li>Delivered actionable insights on category performance, regional gaps, and revenue opportunities</li>
+<li>Managed national-level Olympiads across 15+ cities with 10,000+ participants</li>
+<li>Analyzed 50,000+ data records using Excel (VLOOKUP, Pivot, Macros)</li>
+<li>Built 5+ Power BI dashboards for KPIs, revenue & trends</li>
+<li>Delivered weekly MIS reports to leadership</li>
+<li>Handled 200+ school partnerships and onboarding</li>
 </ul>
 </div>
 
-<div class="card">
-<h3>Data Analytics Training & Projects</h3>
-<p>2023 — 2024</p>
+<div class="timeline-item">
+<h3>Operations Associate</h3>
+<span>Pravartee Sales Pvt Ltd | 2024</span>
 
 <ul>
-<li>Completed hands-on training in Excel, SQL, and Power BI focused on real-world business problems</li>
-
-<li>Executed end-to-end analytics projects including data cleaning, analysis, and visualization</li>
-
-<li>Strengthened analytical thinking through KPI-driven and structured problem-solving approaches</li>
+<li>Analyzed 500+ sales transactions monthly</li>
+<li>Improved pricing and product performance insights</li>
+<li>Streamlined order processing and logistics tracking</li>
+<li>Built reporting dashboards for operations tracking</li>
 </ul>
+</div>
+
 </div>
 
 </section>
 
-<!-- EDUCATION + CERTIFICATIONS -->
+<!-- SKILLS -->
 <section>
-<h2>Education & Certifications</h2>
+
+<h2>Core Skills</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Education</h3>
-<p><b>B.Tech Electrical Engineering</b><br>
-Dr. APJ Abdul Kalam Technical University<br>
-2019 – 2023</p>
-
-<p><b>Class XII – Science</b><br>
-Rampus School (CBSE) – 2018</p>
+<h3>Data & BI</h3>
+<p>Excel, Power BI, SQL, Python</p>
 </div>
 
 <div class="card">
-<h3>Certifications</h3>
-<ul>
-<li>Scaler – Data Science Fundamentals (2024)</li>
-<li>BCG – Data Analytics Simulation (2024)</li>
-<li>Scaler – Python & SQL (2024)</li>
-<li>DataQuest – Python (2024)</li>
-<li>IntelliPaat – Excel (2023)</li>
-<li>STP – Advanced Excel (2023)</li>
-<li>TCS – ESG Program (2023)</li>
-<li>REC – Python Workshop (2022)</li>
-</ul>
+<h3>Operations</h3>
+<p>KPI Tracking, MIS Reporting, Process Optimization</p>
+</div>
+
+<div class="card">
+<h3>Analytics</h3>
+<p>Trend Analysis, Dashboarding, Data Cleaning</p>
+</div>
+
+<div class="card">
+<h3>Business</h3>
+<p>Stakeholder Management, Coordination, Strategy</p>
 </div>
 
 </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- PROJECTS -->
 <section>
-<h2>Contact</h2>
-<p>Open to full-time roles, freelance projects, and collaborations.</p>
+
+<h2>Projects</h2>
+
+<div class="card">
+<h3>Sales Analytics Dashboard</h3>
+<p>Built interactive dashboards identifying high-performing products and revenue trends.</p>
+</div>
+
+<div class="card">
+<h3>SQL Customer Analysis</h3>
+<p>Analyzed customer behavior and revenue patterns using SQL queries.</p>
+</div>
+
+<div class="card">
+<h3>Finance Tracker (Power BI)</h3>
+<p>Developed personal finance dashboard with DAX-based insights.</p>
+</div>
+
 </section>
 
 <footer>
-© 2026 Rahul Pratap
+© 2026 Rahul Pratap | Built for Impact
 </footer>
-
-<script>
-// NAME ANIMATION
-const name="Rahul Pratap";
-const el=document.getElementById("name");
-
-name.split("").forEach((c,i)=>{
-  let span=document.createElement("span");
-  span.textContent=c;
-  span.style.opacity=0;
-
-  setTimeout(()=>{
-    span.style.opacity=1;
-  },i*80);
-
-  el.appendChild(span);
-});
-
-// SCROLL REVEAL
-const sections=document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top<window.innerHeight*0.8){
-      sec.style.opacity=1;
-      sec.style.transform="translateY(0)";
-    }
-  });
-});
-</script>
 
 </body>
 </html>
