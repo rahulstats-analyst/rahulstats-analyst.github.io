@@ -1,7 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rahul Pratap | Data & Operations Analyst</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+:root{
+  --bg:#05070d;
+  --accent:#7f5af0;
+  --accent2:#2cb67d;
+  --text:#fff;
+  --muted:#9aa0a6;
+}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* CURSOR */
+.cursor{
+  width:20px;
+  height:20px;
+  border:2px solid var(--accent);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  padding:1rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  z-index:100;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 3rem;
+}
+
+.hero h1{
+  font-size:4.5rem;
+  line-height:1.1;
+}
+
+.gradient{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* METRICS COUNTER */
+.metrics{
+  display:flex;
+  gap:40px;
+  margin-top:40px;
+}
+
+.metric h2{
+  font-size:2.5rem;
+  color:var(--accent2);
+}
+
+/* SECTIONS */
+section{
+  padding:6rem 3rem;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,0.04);
+  padding:2rem;
+  border-radius:20px;
+  margin-top:1.5rem;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+}
+
+/* TIMELINE */
+.timeline{
+  border-left:2px solid var(--accent);
+  padding-left:20px;
+}
+
+.timeline-item{
+  margin-bottom:40px;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:12px 28px;
+  border-radius:30px;
+  background:var(--accent);
+  text-decoration:none;
+  color:white;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<nav>
+  <b>Rahul Pratap</b>
+  <a href="https://www.linkedin.com/in/rahul-pratap-175276264" target="_blank">LinkedIn</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1>
+<span class="gradient">Data → Decisions → Impact</span>
+</h1>
+
+<p>
+I transform raw operational data into scalable systems, dashboards, and business insights.
+</p>
+
+<div class="metrics">
+  <div class="metric">
+    <h2 id="m1">0</h2>
+    <p>Users Managed</p>
+  </div>
+
+  <div class="metric">
+    <h2 id="m2">0</h2>
+    <p>Data Points</p>
+  </div>
+
+  <div class="metric">
+    <h2 id="m3">0</h2>
+    <p>Dashboards</p>
+  </div>
+</div>
+
+<a href="#experience" class="btn">Explore Work</a>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+
+<h2>Experience</h2>
+
+<div class="timeline">
+
+<div class="timeline-item card">
+<h3>Business Operations Analyst</h3>
+<p>Commerce Teachers' Foundation | 2024–Present</p>
+
+<ul>
+<li>Handled 10,000+ participants across 15+ cities</li>
+<li>Processed 50,000+ data points using Excel automation</li>
+<li>Built 5+ Power BI dashboards for real-time KPIs</li>
+<li>Delivered MIS reports influencing leadership decisions</li>
+<li>Managed onboarding of 200+ schools</li>
+</ul>
+</div>
+
+<div class="timeline-item card">
+<h3>Operations Associate</h3>
+<p>Pravartee Sales Pvt Ltd | 2024</p>
+
+<ul>
+<li>Analyzed 500+ sales transactions monthly</li>
+<li>Optimized pricing and order workflows</li>
+<li>Built dashboards for operations tracking</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+<section>
+
+<h2>Capabilities</h2>
+
+<div class="grid">
+
+<div class="card">Excel • Power BI • SQL • Python</div>
+<div class="card">KPI Tracking • MIS • Dashboards</div>
+<div class="card">Process Optimization • Automation</div>
+<div class="card">Business Insights • Strategy</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section>
+
+<h2>Selected Work</h2>
+
+<div class="card">Sales Dashboard – Revenue & Region Analysis</div>
+<div class="card">SQL Customer Insights – Behavior & Trends</div>
+<div class="card">Finance Tracker – Power BI Visualization</div>
+
+</section>
+
+<footer>
+© 2026 Rahul Pratap — Designed to Stand Out
+</footer>
+
+<script>
+
+/* CUSTOM CURSOR */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+
+/* COUNTER ANIMATION */
+function animate(id,end){
+  let obj=document.getElementById(id);
+  let count=0;
+  let interval=setInterval(()=>{
+    count+=Math.ceil(end/50);
+    if(count>=end){
+      count=end;
+      clearInterval(interval);
+    }
+    obj.innerText=count+"+";
+  },40);
+}
+
+window.onload=()=>{
+  animate("m1",10000);
+  animate("m2",50000);
+  animate("m3",5);
+};
+
+/* GSAP INTRO */
+gsap.from(".hero h1",{y:100,opacity:0,duration:1});
+gsap.from(".hero p",{y:50,opacity:0,duration:1,delay:0.3});
+gsap.from(".metric",{opacity:0,stagger:0.2,delay:0.6});
+
+/* SCROLL REVEAL */
+gsap.utils.toArray("section").forEach(sec=>{
+  gsap.from(sec,{
+    opacity:0,
+    y:80,
+    duration:1,
+    scrollTrigger:{
+      trigger:sec,
+      start:"top 80%"
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Rahul Pratap | Operations & Data Analyst</title>
