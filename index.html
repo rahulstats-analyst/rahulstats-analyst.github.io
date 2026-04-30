@@ -315,20 +315,92 @@ HERO
 
 }
 
+<!-- =========================
+REPLACE YOUR OLD METRICS SECTION
+WITH THIS COMPLETE BLOCK
+========================= -->
+
+<div class="headline-metrics">
+
+    <!-- CARD 1 -->
+    <div class="metric-card">
+
+        <div class="metric-number">
+            <span class="counter" data-target="50000">0</span>+
+        </div>
+
+        <div class="metric-label">
+            DATA POINTS ANALYZED
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="metric-card">
+
+        <div class="metric-number">
+            <span class="counter" data-target="15">0</span>+
+        </div>
+
+        <div class="metric-label">
+            CITIES COVERED
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="metric-card">
+
+        <div class="metric-number">
+            <span class="counter" data-target="10000">0</span>+
+        </div>
+
+        <div class="metric-label">
+            OPERATIONS MANAGED
+        </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="metric-card">
+
+        <div class="metric-number">
+            <span class="counter" data-target="5">0</span>+
+        </div>
+
+        <div class="metric-label">
+            DASHBOARDS BUILT
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+REPLACE YOUR OLD METRICS CSS
+WITH THIS COMPLETE CSS
+========================= -->
+
+<style>
+
 /* =========================
-HEADLINE METRICS
+HEADLINE METRICS FIXED
 ========================= */
 
 .headline-metrics{
 
-    margin-top:70px;
+    width:100%;
 
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(260px,1fr));
+    repeat(4,minmax(240px,1fr));
 
-    gap:35px;
+    gap:28px;
+
+    margin-top:70px;
+
+    align-items:stretch;
 
 }
 
@@ -340,7 +412,7 @@ HEADLINE METRICS
 
     overflow:hidden;
 
-    min-height:220px;
+    min-height:240px;
 
     padding:38px;
 
@@ -348,24 +420,32 @@ HEADLINE METRICS
 
     background:
     linear-gradient(
-        180deg,
-        rgba(16,20,32,0.92),
-        rgba(10,14,24,0.88)
+        145deg,
+        rgba(12,16,28,0.95),
+        rgba(20,25,40,0.92)
     );
 
     border:
-    1px solid rgba(0,255,255,0.12);
-
-    transition:0.45s;
+    1px solid rgba(0,255,255,0.14);
 
     backdrop-filter:blur(18px);
 
+    transition:0.45s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
 }
+
+/* HOVER */
 
 .metric-card:hover{
 
     transform:
-    translateY(-12px)
+    translateY(-10px)
     scale(1.02);
 
     border-color:
@@ -390,12 +470,12 @@ HEADLINE METRICS
     background:
     radial-gradient(
         circle,
-        rgba(0,255,255,0.15),
+        rgba(0,255,255,0.14),
         transparent 70%
     );
 
-    top:-120px;
-    right:-120px;
+    top:-130px;
+    right:-130px;
 
     opacity:0;
 
@@ -411,15 +491,25 @@ HEADLINE METRICS
 
 .metric-number{
 
+    position:relative;
+
+    z-index:2;
+
     font-size:4rem;
 
     font-weight:900;
 
+    line-height:1;
+
     color:#00f0ff;
 
     text-shadow:
-    0 0 10px rgba(0,255,255,0.8),
-    0 0 20px rgba(0,255,255,0.4);
+    0 0 12px rgba(0,255,255,0.9),
+    0 0 25px rgba(0,255,255,0.5);
+
+    margin-bottom:28px;
+
+    word-break:break-word;
 
 }
 
@@ -427,18 +517,116 @@ HEADLINE METRICS
 
 .metric-label{
 
-    margin-top:28px;
+    position:relative;
 
-    font-size:0.9rem;
+    z-index:2;
 
-    letter-spacing:6px;
+    font-size:0.88rem;
 
-    color:rgba(255,255,255,0.7);
+    letter-spacing:5px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,0.72);
 
     font-family:'Space Grotesk',sans-serif;
 
 }
 
+/* TABLET */
+
+@media(max-width:1200px){
+
+    .headline-metrics{
+
+        grid-template-columns:
+        repeat(2,minmax(260px,1fr));
+
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .headline-metrics{
+
+        grid-template-columns:1fr;
+
+        gap:22px;
+
+    }
+
+    .metric-card{
+
+        min-height:200px;
+
+        padding:30px;
+
+    }
+
+    .metric-number{
+
+        font-size:3rem;
+
+    }
+
+}
+
+</style>
+
+<!-- =========================
+COUNTER SCRIPT
+PLACE BEFORE </body>
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const counters =
+document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+const updateCounter = ()=>{
+
+const target =
++counter.getAttribute('data-target');
+
+const current =
++counter.innerText.replace(/,/g,'');
+
+const increment =
+Math.ceil(target / 80);
+
+if(current < target){
+
+counter.innerText =
+(current + increment > target
+? target
+: current + increment)
+.toLocaleString();
+
+requestAnimationFrame(updateCounter);
+
+}else{
+
+counter.innerText =
+target.toLocaleString();
+
+}
+
+};
+
+updateCounter();
+
+});
+
+});
+
+</script>
 /* =========================
 BUTTONS
 ========================= */
