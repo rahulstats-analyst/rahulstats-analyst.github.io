@@ -1,727 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rahul Pratap | Business Operations Analyst</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
 :root{
---bg:#040816;
---card:#0c1224;
---card2:#101a34;
---line:rgba(0,255,255,.08);
---text:#f5f7ff;
---muted:#97a1c0;
---cyan:#00f0ff;
---blue:#4d7cff;
---purple:#8c52ff;
---green:#00ffb3;
---shadow:0 0 40px rgba(0,240,255,.12);
+    --bg:#030712;
+    --card:#07111f;
+    --border:rgba(0,255,255,.12);
+    --text:#f5f7ff;
+    --muted:#9ca3af;
+    --cyan:#00f0ff;
+    --blue:#4f7cff;
+    --purple:#7c4dff;
 }
 
 body{
-background:var(--bg);
-font-family:'Inter',sans-serif;
-color:var(--text);
-overflow-x:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-background-size:55px 55px;
-z-index:-3;
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:60px 60px;
+    z-index:-3;
 }
 
 body::after{
-content:"";
-position:fixed;
-width:900px;
-height:900px;
-background:
-radial-gradient(circle, rgba(0,240,255,.15), transparent 60%);
-top:-300px;
-right:-250px;
-z-index:-2;
-animation:floatGlow 12s ease-in-out infinite alternate;
-}
-
-@keyframes floatGlow{
-0%{transform:translateY(0px);}
-100%{transform:translateY(100px);}
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(124,77,255,.25), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0,240,255,.18), transparent 35%);
+    z-index:-2;
 }
 
 .particles{
-position:fixed;
-inset:0;
-overflow:hidden;
-z-index:-1;
-pointer-events:none;
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
 }
 
 .particle{
-position:absolute;
-width:2px;
-height:2px;
-background:var(--cyan);
-border-radius:50%;
-opacity:.6;
-animation:float linear infinite;
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:var(--cyan);
+    border-radius:50%;
+    opacity:.7;
+    animation:float linear infinite;
 }
 
 @keyframes float{
-from{
-transform:translateY(100vh);
-opacity:0;
-}
-10%{opacity:.8;}
-90%{opacity:.8;}
-to{
-transform:translateY(-100vh);
-opacity:0;
-}
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
 }
 
-/* ===== NAV ===== */
+/* NAVBAR */
 
 nav{
-position:fixed;
-top:0;
-width:100%;
-padding:24px 7%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:999;
-backdrop-filter:blur(12px);
-background:rgba(4,8,22,.55);
-border-bottom:1px solid rgba(255,255,255,.04);
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    padding:24px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(3,7,18,.65);
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
-font-size:28px;
-font-weight:900;
-letter-spacing:-1px;
-background:linear-gradient(90deg,var(--cyan),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+    font-family:'Orbitron',sans-serif;
+    font-size:26px;
+    font-weight:800;
+    color:var(--cyan);
+    letter-spacing:2px;
 }
 
 .nav-links{
-display:flex;
-gap:36px;
+    display:flex;
+    gap:34px;
 }
 
 .nav-links a{
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-font-family:'JetBrains Mono',monospace;
-color:#dbe5ff;
-transition:.3s;
+    color:#dbeafe;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+    letter-spacing:1px;
 }
 
 .nav-links a:hover{
-color:var(--cyan);
-transform:translateY(-2px);
+    color:var(--cyan);
 }
 
-/* ===== CONTAINER ===== */
-
-.container{
-width:min(1400px,92%);
-margin:auto;
-}
-
-/* ===== HERO ===== */
+/* HERO */
 
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding-top:130px;
-position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 7% 80px;
 }
 
-.hero-grid{
-display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:60px;
-align-items:center;
-width:100%;
+.hero-content{
+    max-width:1350px;
+    width:100%;
 }
 
-.hero-left{
-position:relative;
-z-index:5;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.03);
+    border-radius:999px;
+    margin-bottom:28px;
+    color:#dbeafe;
+    font-size:14px;
 }
 
-.tag{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:12px 18px;
-border:1px solid rgba(0,255,255,.18);
-background:rgba(255,255,255,.03);
-border-radius:100px;
-font-size:12px;
-letter-spacing:2px;
-font-family:'JetBrains Mono',monospace;
-color:var(--cyan);
-margin-bottom:28px;
-backdrop-filter:blur(12px);
-}
-
-.tag::before{
-content:"";
-width:8px;
-height:8px;
-border-radius:50%;
-background:var(--green);
-box-shadow:0 0 10px var(--green);
+.badge span{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 10px var(--cyan);
 }
 
 .hero h1{
-font-size:clamp(58px,10vw,118px);
-line-height:.92;
-font-weight:900;
-letter-spacing:-4px;
-margin-bottom:20px;
-position:relative;
+    font-size:clamp(56px,9vw,130px);
+    line-height:.9;
+    font-weight:800;
+    margin-bottom:20px;
+    letter-spacing:-5px;
 }
 
 .hero h1 span{
-background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .headline{
-font-size:clamp(20px,2vw,30px);
-line-height:1.6;
-font-weight:700;
-margin-bottom:28px;
-max-width:1100px;
-color:#eef3ff;
+    font-size:clamp(20px,2vw,36px);
+    font-weight:700;
+    color:#cbd5e1;
+    margin-bottom:32px;
+    line-height:1.5;
 }
 
-.headline .metric-inline{
-color:var(--cyan);
-text-shadow:0 0 16px rgba(0,240,255,.55);
+.description{
+    max-width:980px;
+    font-size:22px;
+    line-height:2;
+    color:var(--muted);
+    margin-bottom:70px;
 }
 
-.hero-desc{
-font-size:20px;
-line-height:1.9;
-max-width:850px;
-color:var(--muted);
-margin-bottom:40px;
-}
+/* METRICS */
 
-.hero-buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:18px 34px;
-border-radius:16px;
-font-weight:700;
-text-decoration:none;
-transition:.35s;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-position:relative;
-overflow:hidden;
-}
-
-.btn-primary{
-background:linear-gradient(90deg,var(--purple),var(--cyan));
-color:white;
-box-shadow:0 10px 40px rgba(0,240,255,.18);
-}
-
-.btn-primary:hover{
-transform:translateY(-4px) scale(1.02);
-}
-
-.btn-secondary{
-border:1px solid rgba(255,255,255,.12);
-background:rgba(255,255,255,.03);
-color:white;
-backdrop-filter:blur(10px);
-}
-
-.btn-secondary:hover{
-border-color:var(--cyan);
-transform:translateY(-4px);
-}
-
-/* ===== METRICS ===== */
-
-.metrics-wrap{
-margin-top:55px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:24px;
-position:relative;
-z-index:2;
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    margin-bottom:70px;
 }
 
 .metric-card{
-position:relative;
-overflow:hidden;
-padding:38px 34px;
-border-radius:28px;
-background:
-linear-gradient(145deg, rgba(12,18,36,.95), rgba(7,13,30,.95));
-border:1px solid rgba(255,255,255,.06);
-transition:.4s;
-min-height:220px;
-display:flex;
-flex-direction:column;
-justify-content:center;
+    position:relative;
+    background:linear-gradient(145deg, rgba(7,17,31,.95), rgba(3,7,18,.95));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:30px;
+    padding:42px;
+    overflow:hidden;
+    transition:.5s;
 }
 
 .metric-card::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(120deg,
-transparent 0%,
-rgba(0,240,255,.18) 45%,
-transparent 100%);
-transform:translateX(-100%);
-transition:1.2s;
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,
+    transparent,
+    rgba(0,240,255,.08),
+    transparent);
+    transform:translateX(-100%);
+    transition:1s;
 }
 
 .metric-card:hover::before{
-transform:translateX(120%);
+    transform:translateX(100%);
 }
 
 .metric-card:hover{
-transform:translateY(-8px);
-border-color:rgba(0,240,255,.35);
-box-shadow:0 20px 60px rgba(0,240,255,.12);
-}
-
-.metric-card::after{
-content:"";
-position:absolute;
-width:200px;
-height:200px;
-border-radius:50%;
-background:radial-gradient(circle, rgba(0,240,255,.18), transparent 70%);
-right:-80px;
-top:-80px;
+    transform:translateY(-10px);
+    border-color:rgba(0,240,255,.5);
+    box-shadow:0 0 30px rgba(0,240,255,.15);
 }
 
 .metric-number{
-font-size:74px;
-font-weight:900;
-line-height:1;
-margin-bottom:18px;
-font-family:'JetBrains Mono',monospace;
-color:var(--cyan);
-text-shadow:
-0 0 12px rgba(0,240,255,.6),
-0 0 30px rgba(0,240,255,.3);
+    font-size:72px;
+    font-weight:800;
+    font-family:'Orbitron',sans-serif;
+    color:var(--cyan);
+    margin-bottom:18px;
+    text-shadow:0 0 22px rgba(0,240,255,.45);
 }
 
-.metric-title{
-font-size:14px;
-line-height:2;
-letter-spacing:8px;
-text-transform:uppercase;
-color:#edf4ff;
-font-family:'JetBrains Mono',monospace;
+.metric-label{
+    color:#f8fafc;
+    letter-spacing:7px;
+    font-size:15px;
+    line-height:1.8;
 }
 
-/* ===== SECTION ===== */
+/* BUTTONS */
+
+.hero-buttons{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 34px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.35s;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+    color:white;
+    box-shadow:0 10px 30px rgba(0,240,255,.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+    background:rgba(255,255,255,.03);
+}
+
+.btn-secondary:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+}
+
+/* SECTION */
 
 .section{
-padding:120px 0;
-position:relative;
-}
-
-.section-top{
-display:flex;
-align-items:center;
-gap:18px;
-margin-bottom:70px;
-}
-
-.section-index{
-font-size:16px;
-font-family:'JetBrains Mono',monospace;
-color:var(--cyan);
+    padding:120px 7%;
 }
 
 .section-title{
-font-size:clamp(38px,6vw,72px);
-font-weight:900;
-letter-spacing:-2px;
+    font-size:56px;
+    margin-bottom:60px;
+    font-weight:800;
 }
 
-/* ===== EXPERIENCE ===== */
+/* EXPERIENCE */
 
 .timeline{
-position:relative;
-padding-left:60px;
+    display:flex;
+    flex-direction:column;
+    gap:35px;
 }
 
-.timeline::before{
-content:"";
-position:absolute;
-left:8px;
-top:0;
-bottom:0;
-width:2px;
-background:linear-gradient(var(--cyan),transparent);
+.timeline-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    padding:40px;
+    border-radius:28px;
+    transition:.4s;
 }
 
-.timeline-item{
-position:relative;
-padding:40px;
-margin-bottom:40px;
-border-radius:30px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.05);
-backdrop-filter:blur(14px);
-transition:.4s;
-}
-
-.timeline-item:hover{
-transform:translateY(-6px);
-border-color:rgba(0,255,255,.2);
-}
-
-.timeline-item::before{
-content:"";
-position:absolute;
-left:-58px;
-top:55px;
-width:18px;
-height:18px;
-border-radius:50%;
-background:var(--cyan);
-box-shadow:0 0 20px var(--cyan);
+.timeline-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,240,255,.35);
 }
 
 .timeline-date{
-font-size:13px;
-letter-spacing:3px;
-font-family:'JetBrains Mono',monospace;
-color:var(--cyan);
-margin-bottom:16px;
-}
-
-.timeline-company{
-font-size:34px;
-font-weight:800;
-margin-bottom:10px;
+    color:var(--cyan);
+    font-weight:700;
+    margin-bottom:12px;
 }
 
 .timeline-role{
-font-size:18px;
-color:#b7c3e3;
-margin-bottom:24px;
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:8px;
 }
 
-.timeline ul{
-padding-left:18px;
+.timeline-company{
+    color:#cbd5e1;
+    margin-bottom:24px;
+    font-size:18px;
 }
 
-.timeline li{
-margin-bottom:16px;
-line-height:1.9;
-color:#d3dcf6;
+.timeline-card ul{
+    padding-left:20px;
 }
 
-/* ===== PROJECTS ===== */
+.timeline-card li{
+    margin-bottom:14px;
+    color:#cbd5e1;
+    line-height:1.8;
+}
 
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-gap:28px;
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
 }
 
 .project-card{
-padding:38px;
-border-radius:30px;
-background:
-linear-gradient(180deg,rgba(15,22,42,.95),rgba(8,12,24,.95));
-border:1px solid rgba(255,255,255,.06);
-position:relative;
-overflow:hidden;
-transition:.4s;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    padding:36px;
+    transition:.4s;
 }
 
 .project-card:hover{
-transform:translateY(-8px);
-border-color:rgba(0,240,255,.3);
+    transform:translateY(-10px);
+    border-color:rgba(0,240,255,.35);
 }
 
-.project-card::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(130deg, transparent, rgba(0,240,255,.08), transparent);
-transform:translateX(-100%);
-transition:1s;
-}
-
-.project-card:hover::before{
-transform:translateX(100%);
-}
-
-.project-type{
-font-size:12px;
-font-family:'JetBrains Mono',monospace;
-letter-spacing:3px;
-color:var(--cyan);
-margin-bottom:20px;
+.project-tag{
+    display:inline-block;
+    padding:8px 14px;
+    background:rgba(0,240,255,.08);
+    color:var(--cyan);
+    border-radius:999px;
+    font-size:12px;
+    margin-bottom:20px;
 }
 
 .project-title{
-font-size:32px;
-font-weight:800;
-margin-bottom:18px;
+    font-size:28px;
+    margin-bottom:18px;
 }
 
-.project-desc{
-line-height:1.9;
-color:#b9c3e0;
-margin-bottom:24px;
+.project-card p{
+    line-height:1.9;
+    color:#cbd5e1;
 }
 
-.project-impact{
-padding:20px;
-border-radius:18px;
-background:rgba(0,255,255,.05);
-border:1px solid rgba(0,255,255,.12);
-}
-
-.project-impact strong{
-display:block;
-margin-bottom:10px;
-color:var(--cyan);
-}
-
-/* ===== SKILLS ===== */
+/* SKILLS */
 
 .skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:28px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
 }
 
-.skill-card{
-padding:34px;
-border-radius:28px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.06);
+.skill-box{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:26px;
+    padding:34px;
 }
 
-.skill-card h3{
-font-size:18px;
-letter-spacing:2px;
-margin-bottom:26px;
-color:var(--cyan);
-font-family:'JetBrains Mono',monospace;
+.skill-box h3{
+    margin-bottom:24px;
+    color:var(--cyan);
 }
 
-.skill{
-margin-bottom:20px;
+.skill-item{
+    margin-bottom:20px;
 }
 
-.skill-top{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-font-size:15px;
+.skill-name{
+    margin-bottom:10px;
 }
 
-.bar{
-height:8px;
-border-radius:100px;
-background:rgba(255,255,255,.08);
-overflow:hidden;
+.skill-bar{
+    height:10px;
+    background:rgba(255,255,255,.08);
+    border-radius:999px;
+    overflow:hidden;
 }
 
-.bar span{
-display:block;
-height:100%;
-border-radius:100px;
-background:linear-gradient(90deg,var(--purple),var(--cyan));
+.skill-fill{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--purple),var(--cyan));
 }
 
-/* ===== CONTACT ===== */
+/* CONTACT */
 
 .contact-box{
-padding:60px;
-border-radius:36px;
-background:
-linear-gradient(145deg, rgba(14,22,44,.95), rgba(7,12,26,.95));
-border:1px solid rgba(0,255,255,.18);
-position:relative;
-overflow:hidden;
+    background:linear-gradient(145deg, rgba(7,17,31,.98), rgba(3,7,18,.98));
+    border:1px solid rgba(0,240,255,.15);
+    border-radius:36px;
+    padding:70px;
+    position:relative;
+    overflow:hidden;
 }
 
 .contact-box::before{
-content:"INITIALIZE_CONTACT_PROTOCOL";
-position:absolute;
-top:18px;
-left:28px;
-font-size:12px;
-letter-spacing:3px;
-font-family:'JetBrains Mono',monospace;
-color:var(--cyan);
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(0,240,255,.12), transparent 70%);
+    right:-200px;
+    top:-200px;
 }
 
-.contact-box h2{
-font-size:64px;
-margin-top:30px;
-margin-bottom:20px;
-line-height:1;
+.contact-title{
+    font-size:58px;
+    margin-bottom:24px;
 }
 
-.contact-box p{
-font-size:18px;
-line-height:1.8;
-max-width:760px;
-color:#bcc8e7;
-margin-bottom:50px;
+.contact-text{
+    max-width:800px;
+    line-height:1.9;
+    color:#cbd5e1;
+    margin-bottom:50px;
+    font-size:18px;
 }
 
 .contact-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:34px;
 }
 
 .contact-item{
-padding:28px;
-border-radius:22px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.06);
-transition:.35s;
-}
-
-.contact-item:hover{
-transform:translateY(-5px);
-border-color:rgba(0,255,255,.2);
+    padding:28px;
+    border-radius:24px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
 }
 
 .contact-label{
-font-size:12px;
-letter-spacing:3px;
-margin-bottom:14px;
-font-family:'JetBrains Mono',monospace;
-color:#7f8cb0;
+    color:var(--muted);
+    margin-bottom:12px;
+    font-size:13px;
+    letter-spacing:3px;
 }
 
 .contact-value,
 .contact-value a{
-font-size:18px;
-line-height:1.7;
-color:var(--cyan);
-text-decoration:none;
-word-break:break-word;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    line-height:1.7;
 }
 
-/* ===== FOOTER ===== */
+.contact-value a:hover{
+    color:var(--cyan);
+}
+
+/* FOOTER */
 
 footer{
-padding:50px 0 70px;
-text-align:center;
-color:#7180a6;
-font-size:14px;
+    padding:40px;
+    text-align:center;
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,.06);
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 
-@media(max-width:1200px){
+@media(max-width:1100px){
 
-.metrics-wrap{
-grid-template-columns:repeat(2,1fr);
-}
-
-.hero-grid{
-grid-template-columns:1fr;
-}
+    .metrics{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
 
 @media(max-width:768px){
 
-nav{
-padding:20px 5%;
-}
+    nav{
+        padding:20px;
+    }
 
-.nav-links{
-display:none;
-}
+    .nav-links{
+        display:none;
+    }
 
-.hero{
-padding-top:150px;
-}
+    .hero{
+        padding:130px 20px 70px;
+    }
 
-.hero h1{
-font-size:64px;
-}
+    .section{
+        padding:90px 20px;
+    }
 
-.headline{
-font-size:24px;
-}
+    .metrics{
+        grid-template-columns:1fr;
+    }
 
-.hero-desc{
-font-size:17px;
-}
+    .metric-number{
+        font-size:58px;
+    }
 
-.metrics-wrap{
-grid-template-columns:1fr;
-}
+    .description{
+        font-size:18px;
+    }
 
-.metric-number{
-font-size:62px;
-}
+    .section-title{
+        font-size:42px;
+    }
 
-.contact-box{
-padding:40px 24px;
-}
+    .contact-box{
+        padding:40px 25px;
+    }
 
-.contact-box h2{
-font-size:42px;
-}
-
-.timeline{
-padding-left:34px;
-}
-
-.timeline-item::before{
-left:-32px;
-}
+    .contact-title{
+        font-size:42px;
+    }
 
 }
 
@@ -733,442 +575,415 @@ left:-32px;
 <div class="particles" id="particles"></div>
 
 <nav>
-<div class="logo">RP.SYS</div>
+    <div class="logo">RP.SYS</div>
 
-<div class="nav-links">
-<a href="#experience">EXPERIENCE</a>
-<a href="#projects">PROJECTS</a>
-<a href="#skills">SKILLS</a>
-<a href="#contact">CONTACT</a>
-</div>
+    <div class="nav-links">
+        <a href="#experience">EXPERIENCE</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#contact">CONTACT</a>
+    </div>
 </nav>
-
-<div class="container">
 
 <section class="hero">
 
-<div class="hero-grid">
+    <div class="hero-content">
 
-<div class="hero-left">
+        <div class="badge">
+            <span></span>
+            Available For Business Analyst Opportunities
+        </div>
 
-<div class="tag">
-AVAILABLE FOR BUSINESS ANALYST / DATA ANALYST ROLES
-</div>
+        <h1>
+            Rahul <span>Pratap</span>
+        </h1>
 
-<h1>
-Rahul <span>Pratap</span>
-</h1>
+        <div class="headline">
+            Business Operations Analyst • Power BI • Excel • SQL • Data Analytics
+        </div>
 
-<div class="headline">
-<span class="metric-inline">50K+</span> Data Points Analyzed •
-<span class="metric-inline">10K+</span> Users Managed •
-<span class="metric-inline">15+</span> Cities Covered •
-<span class="metric-inline">5+</span> Dashboards Delivered
-</div>
+        <p class="description">
+            Results-oriented Business Operations Analyst specializing in MIS reporting, dashboard development,
+            operational analytics, workflow optimization, and business intelligence. Experienced in managing
+            large-scale operations, analyzing 50K+ data points, and creating dashboards that support
+            strategic decision-making across multi-city operations.
+        </p>
 
-<p class="hero-desc">
-Results-oriented Business Operations Analyst with expertise in MIS reporting,
-Power BI dashboards, operational analytics, and workflow optimization.
-Specialized in transforming large-scale operational data into actionable
-business intelligence through interactive dashboards, automation,
-KPI tracking, and strategic reporting.
-</p>
+        <div class="metrics">
 
-<div class="hero-buttons">
-<a href="#projects" class="btn btn-primary">View Projects</a>
-<a href="#contact" class="btn btn-secondary">Contact Me</a>
-</div>
+            <div class="metric-card">
+                <div class="metric-number" data-target="50000">0</div>
+                <div class="metric-label">
+                    DATA POINTS ANALYZED
+                </div>
+            </div>
 
-<div class="metrics-wrap">
+            <div class="metric-card">
+                <div class="metric-number" data-target="10000">0</div>
+                <div class="metric-label">
+                    USERS MANAGED
+                </div>
+            </div>
 
-<div class="metric-card">
-<div class="metric-number">50,000+</div>
-<div class="metric-title">DATA POINTS ANALYZED</div>
-</div>
+            <div class="metric-card">
+                <div class="metric-number" data-target="15">0</div>
+                <div class="metric-label">
+                    CITIES COVERED
+                </div>
+            </div>
 
-<div class="metric-card">
-<div class="metric-number">10,000+</div>
-<div class="metric-title">USERS MANAGED</div>
-</div>
+            <div class="metric-card">
+                <div class="metric-number" data-target="5">0</div>
+                <div class="metric-label">
+                    DASHBOARDS BUILT
+                </div>
+            </div>
 
-<div class="metric-card">
-<div class="metric-number">15+</div>
-<div class="metric-title">CITIES COVERED</div>
-</div>
+        </div>
 
-<div class="metric-card">
-<div class="metric-number">5+</div>
-<div class="metric-title">DASHBOARDS BUILT</div>
-</div>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+                View Projects
+            </a>
 
-</div>
-</div>
+            <a href="#contact" class="btn btn-secondary">
+                Contact Me
+            </a>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
 <section class="section" id="experience">
 
-<div class="section-top">
-<div class="section-index">01</div>
-<h2 class="section-title">Experience</h2>
-</div>
+    <h2 class="section-title">
+        Experience
+    </h2>
 
-<div class="timeline">
+    <div class="timeline">
 
-<div class="timeline-item">
-<div class="timeline-date">JUNE 2024 — PRESENT</div>
-<div class="timeline-company">Commerce Teachers’ Foundation</div>
-<div class="timeline-role">Business Operations Analyst</div>
+        <div class="timeline-card">
 
-<ul>
-<li>Managed national-level Commerce Olympiad operations across 15+ cities handling 10,000+ registrations and operational workflows.</li>
+            <div class="timeline-date">
+                JUNE 2024 — PRESENT
+            </div>
 
-<li>Processed and analyzed 50,000+ operational records using Advanced Excel, Pivot Tables, automation, and reporting systems.</li>
+            <div class="timeline-role">
+                Business Operations Analyst
+            </div>
 
-<li>Designed interactive Power BI dashboards to track KPIs, revenue trends, operational efficiency, and participant analytics.</li>
+            <div class="timeline-company">
+                Commerce Teachers' Foundation
+            </div>
 
-<li>Created weekly MIS reports and business summaries supporting leadership-level decision-making and strategic planning.</li>
+            <ul>
+                <li>Managed national-level operations across 15+ cities and coordinated large-scale commerce olympiads.</li>
+                <li>Processed and analyzed 50K+ operational records using Advanced Excel and MIS reporting.</li>
+                <li>Built interactive Power BI dashboards to monitor registrations, KPIs, and operational metrics.</li>
+                <li>Coordinated communication workflows with 200+ schools and educators.</li>
+            </ul>
 
-<li>Coordinated communication with 200+ schools, educators, and operational stakeholders.</li>
-</ul>
-</div>
+        </div>
 
-<div class="timeline-item">
-<div class="timeline-date">FEB 2024 — MAY 2024</div>
-<div class="timeline-company">Pravartee Sales Pvt. Ltd.</div>
-<div class="timeline-role">Operations Associate</div>
+        <div class="timeline-card">
 
-<ul>
-<li>Analyzed monthly sales and operational datasets to identify pricing inefficiencies and performance trends.</li>
+            <div class="timeline-date">
+                FEB 2024 — MAY 2024
+            </div>
 
-<li>Managed order processing workflows and logistics coordination improving operational consistency.</li>
+            <div class="timeline-role">
+                Operations Associate
+            </div>
 
-<li>Built Excel-based operational trackers and reporting systems for inventory and sales monitoring.</li>
+            <div class="timeline-company">
+                Pravartee Sales Pvt. Ltd.
+            </div>
 
-<li>Supported business operations through structured reporting and workflow optimization initiatives.</li>
-</ul>
-</div>
+            <ul>
+                <li>Analyzed sales and operational data to improve order efficiency and reporting accuracy.</li>
+                <li>Handled order processing, inventory coordination, and logistics workflows.</li>
+                <li>Created operational dashboards for tracking sales and fulfillment performance.</li>
+            </ul>
 
-</div>
+        </div>
+
+    </div>
 
 </section>
 
 <section class="section" id="projects">
 
-<div class="section-top">
-<div class="section-index">02</div>
-<h2 class="section-title">Projects</h2>
-</div>
+    <h2 class="section-title">
+        Featured Projects
+    </h2>
 
-<div class="projects-grid">
+    <div class="projects">
 
-<div class="project-card">
-<div class="project-type">EXCEL • DATA ANALYSIS</div>
-<div class="project-title">Global Store Data Analysis</div>
+        <div class="project-card">
 
-<div class="project-desc">
-Comprehensive retail analytics dashboard analyzing multi-region sales,
-product performance, and profitability trends using Advanced Excel,
-Pivot Tables, slicers, and KPI dashboards.
-</div>
+            <div class="project-tag">
+                POWER BI
+            </div>
 
-<div class="project-impact">
-<strong>KEY IMPACT</strong>
-Identified high-performing product categories and regional revenue
-patterns enabling data-driven operational decision making.
-</div>
-</div>
+            <div class="project-title">
+                Personal Finance Dashboard
+            </div>
 
-<div class="project-card">
-<div class="project-type">SQL • DATABASE ANALYTICS</div>
-<div class="project-title">Music Store SQL Analysis</div>
+            <p>
+                Built a dynamic Power BI dashboard with KPI tracking, expense monitoring,
+                DAX measures, and financial trend visualization for actionable insights.
+            </p>
 
-<div class="project-desc">
-Performed advanced SQL analysis on customer transactions, music purchases,
-and revenue datasets using joins, subqueries, aggregations,
-and customer segmentation techniques.
-</div>
+        </div>
 
-<div class="project-impact">
-<strong>KEY IMPACT</strong>
-Discovered top customer segments and revenue-driving genres improving
-business intelligence reporting capabilities.
-</div>
-</div>
+        <div class="project-card">
 
-<div class="project-card">
-<div class="project-type">POWER BI • BUSINESS INTELLIGENCE</div>
-<div class="project-title">Personal Finance Analytics Dashboard</div>
+            <div class="project-tag">
+                SQL ANALYTICS
+            </div>
 
-<div class="project-desc">
-Built an interactive Power BI dashboard with custom DAX measures,
-financial KPI tracking, category analysis,
-and real-time expense monitoring.
-</div>
+            <div class="project-title">
+                Music Store SQL Analysis
+            </div>
 
-<div class="project-impact">
-<strong>KEY IMPACT</strong>
-Enabled structured tracking of savings, expenses, and financial performance
-through dynamic business intelligence visualizations.
-</div>
-</div>
+            <p>
+                Performed advanced SQL analysis using joins, aggregations, and subqueries
+                to uncover customer revenue patterns and business insights.
+            </p>
 
-<div class="project-card">
-<div class="project-type">POWER BI • BANKING ANALYTICS</div>
-<div class="project-title">BOB Sales Analysis Dashboard</div>
+        </div>
 
-<div class="project-desc">
-Analyzed ATM operations, financial transactions,
-revenue fluctuations, rental costs, and ATM utilization trends
-through interactive Power BI reporting.
-</div>
+        <div class="project-card">
 
-<div class="project-impact">
-<strong>KEY IMPACT</strong>
-Identified seasonal revenue spikes, customer transaction trends,
-and operational cost optimization opportunities.
-</div>
-</div>
+            <div class="project-tag">
+                EXCEL ANALYTICS
+            </div>
 
-</div>
+            <div class="project-title">
+                Global Store Analysis
+            </div>
+
+            <p>
+                Designed Excel dashboards using PivotTables, slicers, charts, and
+                operational reporting to analyze sales trends across multiple regions.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 <section class="section" id="skills">
 
-<div class="section-top">
-<div class="section-index">03</div>
-<h2 class="section-title">Technical Arsenal</h2>
-</div>
+    <h2 class="section-title">
+        Technical Skills
+    </h2>
 
-<div class="skills-grid">
+    <div class="skills-grid">
 
-<div class="skill-card">
-<h3>DATA ANALYTICS</h3>
+        <div class="skill-box">
 
-<div class="skill">
-<div class="skill-top">
-<span>Advanced Excel</span>
-<span>95%</span>
-</div>
-<div class="bar"><span style="width:95%"></span></div>
-</div>
+            <h3>Analytics & BI</h3>
 
-<div class="skill">
-<div class="skill-top">
-<span>Power BI</span>
-<span>92%</span>
-</div>
-<div class="bar"><span style="width:92%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">Power BI</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:92%"></div>
+                </div>
+            </div>
 
-<div class="skill">
-<div class="skill-top">
-<span>SQL</span>
-<span>85%</span>
-</div>
-<div class="bar"><span style="width:85%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">Excel</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:95%"></div>
+                </div>
+            </div>
 
-<div class="skill">
-<div class="skill-top">
-<span>Python</span>
-<span>78%</span>
-</div>
-<div class="bar"><span style="width:78%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">SQL</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+            </div>
 
-</div>
+        </div>
 
-<div class="skill-card">
-<h3>BUSINESS OPERATIONS</h3>
+        <div class="skill-box">
 
-<div class="skill">
-<div class="skill-top">
-<span>MIS Reporting</span>
-<span>95%</span>
-</div>
-<div class="bar"><span style="width:95%"></span></div>
-</div>
+            <h3>Operations</h3>
 
-<div class="skill">
-<div class="skill-top">
-<span>KPI Development</span>
-<span>90%</span>
-</div>
-<div class="bar"><span style="width:90%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">MIS Reporting</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:90%"></div>
+                </div>
+            </div>
 
-<div class="skill">
-<div class="skill-top">
-<span>Workflow Optimization</span>
-<span>88%</span>
-</div>
-<div class="bar"><span style="width:88%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">Process Optimization</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:88%"></div>
+                </div>
+            </div>
 
-<div class="skill">
-<div class="skill-top">
-<span>Project Coordination</span>
-<span>91%</span>
-</div>
-<div class="bar"><span style="width:91%"></span></div>
-</div>
+            <div class="skill-item">
+                <div class="skill-name">KPI Tracking</div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:86%"></div>
+                </div>
+            </div>
 
-</div>
+        </div>
 
-<div class="skill-card">
-<h3>CERTIFICATIONS</h3>
-
-<div class="skill">
-<div class="skill-top">
-<span>Scaler - Data Science</span>
-<span>Certified</span>
-</div>
-<div class="bar"><span style="width:100%"></span></div>
-</div>
-
-<div class="skill">
-<div class="skill-top">
-<span>BCG Analytics Simulation</span>
-<span>Certified</span>
-</div>
-<div class="bar"><span style="width:100%"></span></div>
-</div>
-
-<div class="skill">
-<div class="skill-top">
-<span>Advanced Excel Training</span>
-<span>Certified</span>
-</div>
-<div class="bar"><span style="width:100%"></span></div>
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 <section class="section" id="contact">
 
-<div class="contact-box">
+    <div class="contact-box">
 
-<h2>Let's Build Something</h2>
+        <h2 class="contact-title">
+            Let’s Build Something
+        </h2>
 
-<p>
-Open to full-time Business Analyst, Operations Analyst,
-MIS Executive, and Data Analyst opportunities.
-Available immediately with relocation flexibility across India.
-</p>
+        <p class="contact-text">
+            Open to full-time roles, freelance projects, and collaborations.
+            Available immediately with flexibility to relocate across India.
+        </p>
 
-<div class="contact-grid">
+        <div class="contact-grid">
 
-<div class="contact-item">
-<div class="contact-label">EMAIL</div>
-<div class="contact-value">
-<a href="mailto:rahul.15pratap@gmail.com">
-rahul.15pratap@gmail.com
-</a>
-</div>
-</div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    EMAIL
+                </div>
 
-<div class="contact-item">
-<div class="contact-label">PHONE</div>
-<div class="contact-value">
-<a href="tel:+919369549816">
-+91 936-954-9816
-</a>
-</div>
-</div>
+                <div class="contact-value">
+                    <a href="mailto:rahul.15pratap@gmail.com">
+                        rahul.15pratap@gmail.com
+                    </a>
+                </div>
+            </div>
 
-<div class="contact-item">
-<div class="contact-label">LINKEDIN</div>
-<div class="contact-value">
-<a target="_blank" href="https://www.linkedin.com/in/rahul-pratap-175276264/">
-/rahul-pratap-175276264
-</a>
-</div>
-</div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    PHONE
+                </div>
 
-<div class="contact-item">
-<div class="contact-label">GITHUB</div>
-<div class="contact-value">
-<a target="_blank" href="https://github.com/rahulstats-analyst">
-/rahulstats-analyst
-</a>
-</div>
-</div>
+                <div class="contact-value">
+                    <a href="tel:+919369549816">
+                        +91 936-954-9816
+                    </a>
+                </div>
+            </div>
 
-<div class="contact-item">
-<div class="contact-label">LOCATION</div>
-<div class="contact-value">
-Ghaziabad, Uttar Pradesh, India
-</div>
-</div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    LINKEDIN
+                </div>
 
-<div class="contact-item">
-<div class="contact-label">AVAILABILITY</div>
-<div class="contact-value">
-Immediate • 15 Days Notice
-</div>
-</div>
+                <div class="contact-value">
+                    <a href="https://linkedin.com" target="_blank">
+                        /rahul-pratap-175276264
+                    </a>
+                </div>
+            </div>
 
-</div>
+            <div class="contact-item">
+                <div class="contact-label">
+                    GITHUB
+                </div>
 
-</div>
+                <div class="contact-value">
+                    <a href="https://github.com" target="_blank">
+                        /rahulstats-analyst
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 <footer>
-© 2026 RAHUL PRATAP • DESIGNED FOR IMPACT • BUILT WITH DATA
+    © 2026 Rahul Pratap • Built For Data Driven Impact
 </footer>
-
-</div>
 
 <script>
 
-const particles = document.getElementById('particles');
+/* PARTICLES */
 
-for(let i=0;i<55;i++){
+const particles=document.getElementById('particles');
 
-const p=document.createElement('div');
-p.classList.add('particle');
+for(let i=0;i<60;i++){
 
-p.style.left=Math.random()*100+'%';
-p.style.animationDuration=(12+Math.random()*18)+'s';
-p.style.animationDelay=Math.random()*10+'s';
-p.style.opacity=Math.random();
+    const p=document.createElement('div');
 
-particles.appendChild(p);
+    p.classList.add('particle');
 
+    p.style.left=Math.random()*100+'%';
+
+    p.style.animationDuration=
+    (8+Math.random()*18)+'s';
+
+    p.style.animationDelay=
+    Math.random()*8+'s';
+
+    particles.appendChild(p);
 }
+
+/* COUNTERS */
+
+const counters=document.querySelectorAll('.metric-number');
 
 const observer=new IntersectionObserver(entries=>{
 
-entries.forEach(entry=>{
+    entries.forEach(entry=>{
 
-if(entry.isIntersecting){
+        if(entry.isIntersecting){
 
-entry.target.animate([
-{opacity:0, transform:'translateY(60px)'},
-{opacity:1, transform:'translateY(0px)'}
-],{
-duration:1000,
-fill:'forwards',
-easing:'ease'
+            const counter=entry.target;
+
+            const target=+counter.getAttribute('data-target');
+
+            let count=0;
+
+            const increment=target/120;
+
+            const update=()=>{
+
+                count+=increment;
+
+                if(count<target){
+
+                    counter.innerText=
+                    Math.floor(count).toLocaleString();
+
+                    requestAnimationFrame(update);
+
+                }else{
+
+                    counter.innerText=
+                    target.toLocaleString()+'+';
+                }
+            }
+
+            update();
+
+            observer.unobserve(counter);
+        }
+    })
+
+},{threshold:.5});
+
+counters.forEach(counter=>{
+    observer.observe(counter);
 });
-
-}
-
-});
-
-},{threshold:.15});
-
-document.querySelectorAll('.timeline-item,.project-card,.skill-card,.metric-card,.contact-item')
-.forEach(el=>observer.observe(el));
 
 </script>
 
