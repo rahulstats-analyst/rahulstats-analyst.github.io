@@ -21,28 +21,88 @@
 }
 
 :root{
-    --bg:#040816;
-    --bg2:#081120;
+
+    --bg:#050816;
+    --bg2:#0b1120;
     --card:rgba(255,255,255,.05);
     --border:rgba(255,255,255,.08);
+
     --text:#f8fafc;
     --muted:#94a3b8;
+
     --cyan:#00e5ff;
     --blue:#5b7cff;
     --purple:#8b5cf6;
-    --glass:blur(18px);
+
+    --shadow:0 10px 35px rgba(0,0,0,.25);
+
+}
+
+body.light{
+
+    --bg:#eef4ff;
+    --bg2:#ffffff;
+    --card:rgba(255,255,255,.82);
+    --border:rgba(0,0,0,.08);
+
+    --text:#0f172a;
+    --muted:#475569;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
 }
 
 body{
+    font-family:'Inter',sans-serif;
     background:var(--bg);
     color:var(--text);
-    font-family:'Inter',sans-serif;
     overflow-x:hidden;
+    transition:.4s;
 }
 
-/* ========================= */
-/* CUSTOM CURSOR */
-/* ========================= */
+/* ================================= */
+/* BACKGROUND */
+/* ================================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    z-index:-3;
+}
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(130px);
+    z-index:-2;
+    opacity:.25;
+}
+
+.glow1{
+    background:var(--purple);
+    top:-180px;
+    left:-100px;
+}
+
+.glow2{
+    background:var(--cyan);
+    right:-150px;
+    bottom:-100px;
+}
+
+/* ================================= */
+/* CURSOR */
+/* ================================= */
 
 .cursor{
     width:20px;
@@ -50,65 +110,15 @@ body{
     border:2px solid var(--cyan);
     border-radius:50%;
     position:fixed;
-    pointer-events:none;
     transform:translate(-50%,-50%);
-    z-index:99999;
-    mix-blend-mode:screen;
-    transition:transform .08s linear;
-    box-shadow:0 0 20px var(--cyan);
+    pointer-events:none;
+    z-index:9999;
+    box-shadow:0 0 18px var(--cyan);
 }
 
-/* ========================= */
-/* BACKGROUND */
-/* ========================= */
-
-body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-    background-size:60px 60px;
-    z-index:-3;
-}
-
-body::after{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 10% 20%, rgba(91,124,255,.18), transparent 25%),
-    radial-gradient(circle at 90% 80%, rgba(0,229,255,.12), transparent 30%),
-    radial-gradient(circle at 50% 50%, rgba(139,92,246,.12), transparent 30%);
-    z-index:-2;
-}
-
-.blur{
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    filter:blur(120px);
-    opacity:.25;
-    z-index:-1;
-}
-
-.blur1{
-    background:var(--purple);
-    top:-150px;
-    left:-100px;
-}
-
-.blur2{
-    background:var(--cyan);
-    right:-120px;
-    bottom:-120px;
-}
-
-/* ========================= */
+/* ================================= */
 /* NAVBAR */
-/* ========================= */
+/* ================================= */
 
 nav{
     width:100%;
@@ -116,36 +126,45 @@ nav{
     top:0;
     left:0;
     z-index:1000;
+
     padding:24px 7%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     backdrop-filter:blur(18px);
-    background:rgba(4,8,22,.55);
+
+    background:rgba(5,8,22,.55);
+
     border-bottom:1px solid rgba(255,255,255,.05);
 }
 
+body.light nav{
+    background:rgba(255,255,255,.75);
+}
+
 .logo{
-    font-size:28px;
+    font-size:30px;
     font-weight:900;
     font-family:'Space Grotesk',sans-serif;
-    letter-spacing:2px;
-    background:linear-gradient(90deg,var(--cyan),#fff);
+
+    background:linear-gradient(90deg,var(--purple),var(--cyan));
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
 .nav-links{
     display:flex;
-    gap:32px;
+    gap:30px;
 }
 
 .nav-links a{
-    color:#dbeafe;
     text-decoration:none;
+    color:var(--text);
     font-size:14px;
-    font-weight:600;
-    transition:.3s;
+    font-weight:700;
     position:relative;
 }
 
@@ -154,9 +173,12 @@ nav{
     position:absolute;
     left:0;
     bottom:-8px;
+
     width:0;
     height:2px;
+
     background:var(--cyan);
+
     transition:.4s;
 }
 
@@ -164,23 +186,42 @@ nav{
     width:100%;
 }
 
-/* ========================= */
+.theme-toggle{
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+    border:none;
+
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    box-shadow:var(--shadow);
+}
+
+/* ================================= */
 /* HERO */
-/* ========================= */
+/* ================================= */
 
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
+
     padding:140px 7% 100px;
-    position:relative;
 }
 
 .hero-grid{
-    display:grid;
-    grid-template-columns:1.3fr .7fr;
-    gap:60px;
     width:100%;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:70px;
     align-items:center;
 }
 
@@ -188,73 +229,104 @@ nav{
     display:inline-flex;
     align-items:center;
     gap:12px;
-    padding:12px 20px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
+
+    padding:12px 22px;
+
     border-radius:999px;
-    margin-bottom:30px;
-    backdrop-filter:blur(10px);
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid var(--border);
+
+    margin-bottom:28px;
 }
 
 .badge span{
     width:10px;
     height:10px;
+
     border-radius:50%;
-    background:var(--cyan);
-    box-shadow:0 0 18px var(--cyan);
+
+    background:#00ff9d;
+
+    box-shadow:0 0 15px #00ff9d;
 }
 
 .hero h1{
-    font-size:clamp(70px,9vw,150px);
+
+    font-size:clamp(72px,10vw,160px);
+
     line-height:.88;
-    letter-spacing:-6px;
-    margin-bottom:22px;
+
+    letter-spacing:-7px;
+
     font-weight:900;
+
+    margin-bottom:20px;
 }
 
 .hero h1 span{
+
     background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
 .headline{
     font-size:clamp(22px,2vw,34px);
-    color:#cbd5e1;
-    line-height:1.5;
+
     font-weight:600;
+
+    color:var(--muted);
+
     margin-bottom:30px;
+
+    line-height:1.5;
 }
 
 .description{
-    max-width:900px;
-    color:var(--muted);
+    max-width:850px;
+
     font-size:20px;
+
     line-height:1.9;
-    margin-bottom:50px;
+
+    color:var(--muted);
+
+    margin-bottom:45px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:20px;
+    gap:18px;
     flex-wrap:wrap;
 }
 
 .btn{
+
     padding:18px 30px;
+
     border-radius:18px;
+
     text-decoration:none;
+
     font-weight:700;
+
     display:inline-flex;
     align-items:center;
     gap:12px;
+
     transition:.4s;
 }
 
 .btn-primary{
+
     background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+
     color:white;
-    box-shadow:0 15px 40px rgba(0,229,255,.18);
+
+    box-shadow:0 10px 35px rgba(0,229,255,.2);
 }
 
 .btn-primary:hover{
@@ -262,55 +334,63 @@ nav{
 }
 
 .btn-secondary{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    color:white;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
 }
 
 .btn-secondary:hover{
+
     border-color:var(--cyan);
+
     color:var(--cyan);
 }
 
-/* ========================= */
-/* PROFILE CARD */
-/* ========================= */
+/* ================================= */
+/* HERO SIDE CARD */
+/* ================================= */
 
-.profile-card{
-    position:relative;
+.hero-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:36px;
+
     padding:35px;
-    border-radius:34px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
+
+    position:relative;
+
     overflow:hidden;
-    animation:floatCard 4s ease-in-out infinite;
+
+    box-shadow:var(--shadow);
+
+    backdrop-filter:blur(20px);
+
+    animation:floating 5s ease-in-out infinite;
 }
 
-.profile-card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(135deg,
-    transparent,
-    rgba(255,255,255,.05),
-    transparent);
-}
+@keyframes floating{
 
-@keyframes floatCard{
     0%,100%{
         transform:translateY(0px);
     }
+
     50%{
         transform:translateY(-10px);
     }
+
 }
 
-.profile-top{
+.hero-top{
     display:flex;
     justify-content:space-between;
-    margin-bottom:40px;
+
+    margin-bottom:35px;
 }
 
 .live{
@@ -319,109 +399,141 @@ nav{
     letter-spacing:2px;
 }
 
-.profile-role{
+.role{
     color:var(--muted);
-    font-size:14px;
+    font-size:13px;
 }
 
-.profile-main{
-    margin-bottom:40px;
-}
-
-.profile-main h3{
+.hero-card h3{
     font-size:30px;
-    margin-bottom:12px;
+    margin-bottom:16px;
 }
 
-.profile-main p{
-    color:var(--muted);
+.hero-card p{
     line-height:1.8;
+    color:var(--muted);
 }
 
-.mini-stats{
+.hero-mini-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:18px;
+
+    margin-top:35px;
 }
 
-.mini-card{
-    background:rgba(255,255,255,.04);
+.mini-box{
+
     padding:22px;
-    border-radius:22px;
-    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid var(--border);
 }
 
-.mini-card h2{
+.mini-box h2{
+
+    font-size:34px;
+
     color:var(--cyan);
+
     margin-bottom:8px;
-    font-size:32px;
 }
 
-.mini-card p{
+.mini-box p{
+
     font-size:12px;
+
     letter-spacing:2px;
-    color:#dbeafe;
 }
 
-/* ========================= */
+/* ================================= */
 /* SECTION */
-/* ========================= */
+/* ================================= */
 
 .section{
     padding:120px 7%;
 }
 
 .section-title{
-    font-size:60px;
-    margin-bottom:70px;
+
+    font-size:62px;
+
+    margin-bottom:65px;
+
     font-weight:900;
+
     letter-spacing:-2px;
 }
 
-/* ========================= */
+/* ================================= */
 /* IMPACT */
-/* ========================= */
+/* ================================= */
 
 .impact-grid{
+
     display:grid;
+
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
     gap:28px;
 }
 
 .impact-card{
-    position:relative;
+
     padding:40px;
-    border-radius:30px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:32px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    transition:.5s;
+
+    position:relative;
+
     overflow:hidden;
-    transition:.45s;
 }
 
 .impact-card:hover{
+
     transform:translateY(-10px);
-    border-color:rgba(0,229,255,.3);
+
+    border-color:rgba(0,229,255,.35);
 }
 
 .impact-card i{
-    font-size:38px;
+
+    font-size:40px;
+
     color:var(--cyan);
-    margin-bottom:24px;
+
+    margin-bottom:25px;
 }
 
 .impact-card h3{
-    font-size:42px;
+
+    font-size:46px;
+
     margin-bottom:12px;
 }
 
 .impact-card p{
-    color:#cbd5e1;
-    line-height:1.7;
+
+    line-height:1.8;
+
+    color:var(--muted);
 }
 
-/* ========================= */
+/* ================================= */
 /* EXPERIENCE */
-/* ========================= */
+/* ================================= */
 
 .timeline{
     position:relative;
@@ -429,57 +541,86 @@ nav{
 }
 
 .timeline::before{
+
     content:'';
+
     position:absolute;
+
     left:8px;
     top:0;
+
     width:2px;
     height:100%;
+
     background:linear-gradient(var(--cyan),transparent);
 }
 
 .timeline-card{
+
     position:relative;
-    margin-bottom:50px;
+
+    margin-bottom:45px;
+
     padding:40px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:30px;
+
+    border-radius:32px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     transition:.4s;
 }
 
 .timeline-card:hover{
+
     transform:translateY(-8px);
-    border-color:rgba(0,229,255,.3);
+
+    border-color:rgba(0,229,255,.35);
 }
 
 .timeline-card::before{
+
     content:'';
+
     position:absolute;
-    left:-43px;
-    top:40px;
+
     width:18px;
     height:18px;
+
     border-radius:50%;
+
     background:var(--cyan);
+
+    left:-43px;
+    top:42px;
+
     box-shadow:0 0 20px var(--cyan);
 }
 
 .timeline-date{
+
     color:var(--cyan);
+
     font-weight:700;
-    margin-bottom:14px;
+
+    margin-bottom:12px;
 }
 
 .timeline-role{
-    font-size:36px;
+
+    font-size:34px;
+
     font-weight:800;
-    margin-bottom:8px;
+
+    margin-bottom:10px;
 }
 
 .timeline-company{
-    color:#cbd5e1;
-    margin-bottom:26px;
+
+    color:var(--muted);
+
+    margin-bottom:25px;
 }
 
 .timeline-card ul{
@@ -487,151 +628,209 @@ nav{
 }
 
 .timeline-card li{
+
     margin-bottom:16px;
-    color:#cbd5e1;
+
     line-height:1.9;
+
+    color:var(--muted);
 }
 
-/* ========================= */
+/* ================================= */
 /* PROJECTS */
-/* ========================= */
+/* ================================= */
 
 .projects{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
     gap:30px;
 }
 
 .project-card{
+
     position:relative;
+
     overflow:hidden;
-    padding:40px;
-    border-radius:32px;
-    background:linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:34px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     transition:.5s;
+
+    box-shadow:var(--shadow);
 }
 
 .project-card:hover{
+
     transform:translateY(-12px);
-    border-color:rgba(0,229,255,.35);
+
+    border-color:rgba(0,229,255,.3);
 }
 
-.project-card::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(120deg,
-    transparent,
-    rgba(255,255,255,.05),
-    transparent);
-    transform:translateX(-100%);
-    transition:1s;
+.project-image{
+
+    width:100%;
+    height:240px;
+
+    object-fit:cover;
 }
 
-.project-card:hover::before{
-    transform:translateX(100%);
+.project-content{
+    padding:34px;
 }
 
 .project-tag{
+
     display:inline-block;
+
     padding:10px 18px;
+
     border-radius:999px;
+
     background:rgba(0,229,255,.08);
+
     color:var(--cyan);
+
     font-size:12px;
+
     margin-bottom:22px;
 }
 
 .project-title{
-    font-size:32px;
+
+    font-size:30px;
+
     margin-bottom:18px;
+
+    font-weight:800;
 }
 
-.project-card p{
-    color:#cbd5e1;
+.project-content p{
+
     line-height:1.9;
+
+    color:var(--muted);
+
     margin-bottom:28px;
 }
 
 .project-link{
+
     color:var(--cyan);
+
     text-decoration:none;
+
     font-weight:700;
 }
 
-/* ========================= */
+/* ================================= */
 /* SKILLS */
-/* ========================= */
+/* ================================= */
 
 .skills-grid{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
     gap:30px;
 }
 
 .skill-box{
+
     padding:40px;
-    border-radius:30px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:32px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
 }
 
 .skill-box h3{
-    margin-bottom:30px;
+
     color:var(--cyan);
-    font-size:26px;
+
+    margin-bottom:28px;
+
+    font-size:28px;
 }
 
 .skill-item{
-    margin-bottom:24px;
+    margin-bottom:22px;
 }
 
 .skill-name{
+
     display:flex;
     justify-content:space-between;
+
     margin-bottom:10px;
 }
 
 .skill-bar{
+
     height:12px;
+
     border-radius:999px;
+
     overflow:hidden;
-    background:rgba(255,255,255,.06);
+
+    background:rgba(255,255,255,.08);
 }
 
 .skill-fill{
+
     height:100%;
+
     border-radius:999px;
+
     background:linear-gradient(90deg,var(--purple),var(--cyan));
 }
 
-/* ========================= */
+/* ================================= */
 /* CERTIFICATIONS */
-/* ========================= */
+/* ================================= */
 
-.certifications{
+.cert-grid{
+
     display:grid;
+
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
+
+    gap:26px;
 }
 
 .cert-card{
+
     padding:30px;
-    border-radius:26px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     transition:.4s;
 }
 
 .cert-card:hover{
+
     transform:translateY(-8px);
+
     border-color:rgba(0,229,255,.3);
 }
 
 .cert-card h4{
+
     margin-bottom:10px;
+
     font-size:22px;
 }
 
@@ -639,56 +838,85 @@ nav{
     color:var(--muted);
 }
 
-/* ========================= */
+/* ================================= */
 /* CONTACT */
-/* ========================= */
+/* ================================= */
 
 .contact-box{
+
     padding:80px;
+
     border-radius:40px;
-    background:linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    border:1px solid rgba(255,255,255,.08);
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     position:relative;
+
     overflow:hidden;
 }
 
 .contact-title{
-    font-size:62px;
+
+    font-size:64px;
+
     margin-bottom:24px;
+
+    font-weight:900;
 }
 
 .contact-text{
+
     max-width:850px;
-    color:#cbd5e1;
-    line-height:1.9;
-    margin-bottom:60px;
+
     font-size:20px;
+
+    line-height:1.9;
+
+    color:var(--muted);
+
+    margin-bottom:55px;
 }
 
 .contact-grid{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:28px;
 }
 
 .contact-item{
+
     padding:28px;
-    border-radius:24px;
+
+    border-radius:26px;
+
     background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+
+    border:1px solid var(--border);
 }
 
 .contact-label{
-    color:var(--muted);
+
     font-size:13px;
+
+    color:var(--muted);
+
     letter-spacing:3px;
-    margin-bottom:14px;
+
+    margin-bottom:12px;
 }
 
 .contact-value,
 .contact-value a{
-    color:white;
+
     text-decoration:none;
+
+    color:var(--text);
+
     line-height:1.8;
 }
 
@@ -696,34 +924,42 @@ nav{
     color:var(--cyan);
 }
 
-/* ========================= */
+/* ================================= */
 /* FOOTER */
-/* ========================= */
+/* ================================= */
 
 footer{
+
     padding:40px;
+
     text-align:center;
-    color:#94a3b8;
+
+    color:var(--muted);
 }
 
-/* ========================= */
+/* ================================= */
 /* REVEAL */
-/* ========================= */
+/* ================================= */
 
 .reveal{
+
     opacity:0;
-    transform:translateY(60px);
+
+    transform:translateY(70px);
+
     transition:1s ease;
 }
 
 .reveal.active{
+
     opacity:1;
+
     transform:translateY(0);
 }
 
-/* ========================= */
+/* ================================= */
 /* RESPONSIVE */
-/* ========================= */
+/* ================================= */
 
 @media(max-width:1100px){
 
@@ -750,7 +986,7 @@ footer{
     }
 
     .section-title{
-        font-size:42px;
+        font-size:44px;
     }
 
     .contact-title{
@@ -770,10 +1006,12 @@ footer{
 
 <div class="cursor"></div>
 
-<div class="blur blur1"></div>
-<div class="blur blur2"></div>
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
 
-<!-- NAV -->
+<!-- ============================ -->
+<!-- NAVBAR -->
+<!-- ============================ -->
 
 <nav>
 
@@ -782,16 +1020,24 @@ footer{
     </div>
 
     <div class="nav-links">
+
         <a href="#impact">IMPACT</a>
         <a href="#experience">EXPERIENCE</a>
         <a href="#projects">PROJECTS</a>
         <a href="#skills">SKILLS</a>
         <a href="#contact">CONTACT</a>
+
     </div>
+
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+    </button>
 
 </nav>
 
+<!-- ============================ -->
 <!-- HERO -->
+<!-- ============================ -->
 
 <section class="hero">
 
@@ -801,7 +1047,7 @@ footer{
 
             <div class="badge">
                 <span></span>
-                Available For Business Analyst Opportunities
+                Open To Business Analyst Opportunities
             </div>
 
             <h1>
@@ -814,78 +1060,88 @@ footer{
             </div>
 
             <p class="description">
-                Results-driven Business Operations Analyst with expertise in MIS reporting,
-                Power BI dashboards, Excel analytics, KPI monitoring, and operational intelligence.
-                Experienced in transforming high-volume operational data into strategic business insights
-                across multi-city operations and large-scale education programs.
+
+                Results-driven Business Operations Analyst with expertise in
+                operational intelligence, MIS reporting, Power BI dashboarding,
+                workflow optimization, and business analytics. Experienced in
+                transforming large operational datasets into actionable business
+                insights supporting high-scale multi-city operations.
+
             </p>
 
             <div class="hero-buttons">
 
                 <a href="#projects" class="btn btn-primary">
+
                     <i class="fa-solid fa-chart-line"></i>
-                    Explore Projects
+
+                    View Projects
+
                 </a>
 
-                <a href="Rahul_Pratap_Resume.pdf" class="btn btn-secondary" download>
+                <a
+                href="https://drive.google.com/file/d/1L2vD9uuWua4ptBDuf-4ITnujo8dUwS6R/view?usp=drive_link"
+                target="_blank"
+                class="btn btn-secondary">
+
                     <i class="fa-solid fa-file-arrow-down"></i>
+
                     Download Resume
+
                 </a>
 
             </div>
 
         </div>
 
-        <!-- RIGHT PANEL -->
+        <!-- HERO SIDE -->
 
-        <div class="profile-card">
+        <div class="hero-card">
 
-            <div class="profile-top">
+            <div class="hero-top">
 
                 <div class="live">
                     ● AVAILABLE
                 </div>
 
-                <div class="profile-role">
-                    BUSINESS ANALYST
+                <div class="role">
+                    ANALYTICS + OPERATIONS
                 </div>
 
             </div>
 
-            <div class="profile-main">
+            <h3>
+                Data Driven Business Impact
+            </h3>
 
-                <h3>
-                    Data Driven Operations
-                </h3>
+            <p>
 
-                <p>
-                    Building operational systems, analytics dashboards,
-                    and business intelligence workflows that improve
-                    visibility, reporting accuracy, and decision-making.
-                </p>
+                Building scalable operational systems, dashboards,
+                KPI frameworks, and reporting workflows for strategic
+                decision-making and operational efficiency.
 
-            </div>
+            </p>
 
-            <div class="mini-stats">
+            <div class="hero-mini-grid">
 
-                <div class="mini-card">
+                <div class="mini-box">
                     <h2>50K+</h2>
-                    <p>DATA RECORDS</p>
+                    <p>DATA POINTS</p>
                 </div>
 
-                <div class="mini-card">
+                <div class="mini-box">
                     <h2>10K+</h2>
                     <p>REGISTRATIONS</p>
                 </div>
 
-                <div class="mini-card">
+                <div class="mini-box">
                     <h2>15+</h2>
                     <p>CITIES</p>
                 </div>
 
-                <div class="mini-card">
+                <div class="mini-box">
                     <h2>5+</h2>
-                    <p>POWER BI DASHBOARDS</p>
+                    <p>DASHBOARDS</p>
                 </div>
 
             </div>
@@ -896,7 +1152,9 @@ footer{
 
 </section>
 
+<!-- ============================ -->
 <!-- IMPACT -->
+<!-- ============================ -->
 
 <section class="section reveal" id="impact">
 
@@ -907,46 +1165,68 @@ footer{
     <div class="impact-grid">
 
         <div class="impact-card">
+
             <i class="fa-solid fa-database"></i>
+
             <h3>50K+</h3>
+
             <p>
-                Operational and registration data points processed using Advanced Excel,
-                MIS reporting, Pivot Tables, and analytics workflows.
+                Operational and registration records processed using
+                Advanced Excel, MIS reporting, analytics workflows,
+                Pivot Tables, and dashboard automation.
             </p>
+
         </div>
 
         <div class="impact-card">
+
             <i class="fa-solid fa-chart-pie"></i>
+
             <h3>5+</h3>
+
             <p>
-                Interactive Power BI dashboards built for KPI monitoring,
-                registration tracking, revenue visibility, and leadership insights.
+                Interactive Power BI dashboards developed for KPI tracking,
+                revenue visibility, operational intelligence,
+                and leadership reporting.
             </p>
+
         </div>
 
         <div class="impact-card">
+
             <i class="fa-solid fa-school"></i>
+
             <h3>200+</h3>
+
             <p>
-                Schools and educators coordinated through streamlined communication
-                and onboarding operations across national programs.
+                Schools and educators coordinated through
+                streamlined onboarding and communication workflows
+                across national-level programs.
             </p>
+
         </div>
 
         <div class="impact-card">
+
             <i class="fa-solid fa-location-dot"></i>
+
             <h3>15+</h3>
+
             <p>
-                Multi-city operational workflows and logistics managed with
-                high execution accuracy and zero critical incidents.
+                Multi-city operations and logistics workflows
+                managed with strong execution accuracy and
+                zero critical incidents.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
+<!-- ============================ -->
 <!-- EXPERIENCE -->
+<!-- ============================ -->
 
 <section class="section reveal" id="experience">
 
@@ -955,6 +1235,45 @@ footer{
     </h2>
 
     <div class="timeline">
+
+        <!-- GAP YEAR -->
+
+        <div class="timeline-card">
+
+            <div class="timeline-date">
+                JULY 2023 — JAN 2024
+            </div>
+
+            <div class="timeline-role">
+                Professional Skill Development & Analytics Training
+            </div>
+
+            <div class="timeline-company">
+                Self-Learning • Certifications • Industry Projects
+            </div>
+
+            <ul>
+
+                <li>
+                    Focused on strengthening analytical and technical skills in Power BI,
+                    Advanced Excel, SQL, Python, and business reporting.
+                </li>
+
+                <li>
+                    Completed industry-aligned certifications and hands-on analytics projects
+                    involving dashboard development, KPI tracking, and data visualization.
+                </li>
+
+                <li>
+                    Built foundational business intelligence and data analytics capabilities
+                    aligned with Business Analyst and Operations Analyst roles.
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- CURRENT -->
 
         <div class="timeline-card">
 
@@ -971,19 +1290,37 @@ footer{
             </div>
 
             <ul>
-                <li>Orchestrated end-to-end operations for National-level Commerce Olympiads across 15+ cities with 10,000+ participant registrations.</li>
 
-                <li>Analyzed and processed 50,000+ operational records using Advanced Excel including VLOOKUP, INDEX-MATCH, Pivot Tables, and automation workflows.</li>
+                <li>
+                    Orchestrated end-to-end operations for National-level Commerce Olympiads
+                    across 15+ cities with 10,000+ participant registrations.
+                </li>
 
-                <li>Designed and deployed 5+ interactive Power BI dashboards for KPI tracking, revenue visibility, and operational intelligence.</li>
+                <li>
+                    Processed and analyzed 50,000+ operational records using Advanced Excel,
+                    automation workflows, and MIS reporting systems.
+                </li>
 
-                <li>Generated weekly MIS reports and strategic operational insights for senior stakeholders and leadership teams.</li>
+                <li>
+                    Designed and deployed 5+ Power BI dashboards for KPI monitoring,
+                    revenue visibility, and operational analytics.
+                </li>
 
-                <li>Streamlined onboarding and communication processes for 200+ schools and educators improving coordination efficiency.</li>
+                <li>
+                    Generated weekly MIS reports and operational insights for
+                    senior stakeholders and leadership teams.
+                </li>
+
+                <li>
+                    Streamlined onboarding and communication workflows
+                    for 200+ schools and educators.
+                </li>
 
             </ul>
 
         </div>
+
+        <!-- PREVIOUS -->
 
         <div class="timeline-card">
 
@@ -1001,13 +1338,21 @@ footer{
 
             <ul>
 
-                <li>Analyzed 500+ monthly sales transactions to identify pricing inefficiencies and operational trends.</li>
+                <li>
+                    Analyzed monthly sales and order transactions using
+                    Advanced Excel and Google Sheets to identify pricing
+                    inefficiencies and operational trends.
+                </li>
 
-                <li>Managed end-to-end order processing and logistics coordination improving delivery efficiency and reporting accuracy.</li>
+                <li>
+                    Managed end-to-end order processing and logistics coordination
+                    improving delivery efficiency and reporting accuracy.
+                </li>
 
-                <li>Created operational dashboards tracking sales performance, inventory turnover, and fulfillment metrics.</li>
-
-                <li>Standardized workflows and documentation processes reducing operational errors and compliance delays.</li>
+                <li>
+                    Built operational dashboards tracking sales performance,
+                    inventory turnover, and fulfillment metrics.
+                </li>
 
             </ul>
 
@@ -1017,7 +1362,9 @@ footer{
 
 </section>
 
+<!-- ============================ -->
 <!-- PROJECTS -->
+<!-- ============================ -->
 
 <section class="section reveal" id="projects">
 
@@ -1027,69 +1374,114 @@ footer{
 
     <div class="projects">
 
+        <!-- BOB ATM -->
+
         <div class="project-card">
 
-            <div class="project-tag">
-                POWER BI ANALYTICS
+            <img
+            src="https://raw.githubusercontent.com/rahulstats-analyst/BOB-ATM-Sales-Analyses/main/Screenshot%202025-05-02%20190745.png"
+            class="project-image"
+            alt="BOB ATM Sales Analysis Dashboard">
+
+            <div class="project-content">
+
+                <div class="project-tag">
+                    POWER BI • BANKING ANALYTICS
+                </div>
+
+                <div class="project-title">
+                    BOB ATM Sales Analysis
+                </div>
+
+                <p>
+
+                    Developed an advanced Power BI banking analytics dashboard
+                    analyzing ATM revenue, AMC trends, monthly transaction insights,
+                    and financial performance metrics using interactive visualizations
+                    and KPI reporting.
+
+                </p>
+
+                <a
+                href="https://github.com/rahulstats-analyst/BOB-ATM-Sales-Analyses"
+                target="_blank"
+                class="project-link">
+
+                    View Project →
+
+                </a>
+
             </div>
-
-            <div class="project-title">
-                Personal Finance Dashboard
-            </div>
-
-            <p>
-                Developed a dynamic financial analytics dashboard using Power BI,
-                DAX measures, KPI indicators, and trend visualization to deliver
-                real-time insights into expense patterns and savings performance.
-            </p>
-
-            <a href="https://github.com/rahulstats-analyst" class="project-link" target="_blank">
-                View On GitHub →
-            </a>
 
         </div>
 
+        <!-- FINANCE -->
+
         <div class="project-card">
 
-            <div class="project-tag">
-                SQL DATA ANALYSIS
+            <div class="project-content">
+
+                <div class="project-tag">
+                    POWER BI ANALYTICS
+                </div>
+
+                <div class="project-title">
+                    Personal Finance Dashboard
+                </div>
+
+                <p>
+
+                    Built a dynamic financial dashboard using Power BI,
+                    DAX measures, KPI tracking, expense analytics,
+                    and financial trend visualization for real-time insights.
+
+                </p>
+
+                <a
+                href="https://github.com/rahulstats-analyst"
+                target="_blank"
+                class="project-link">
+
+                    View Project →
+
+                </a>
+
             </div>
-
-            <div class="project-title">
-                Music Store SQL Analysis
-            </div>
-
-            <p>
-                Performed advanced SQL analysis using joins, aggregations,
-                subqueries, and customer segmentation techniques to uncover
-                revenue trends and customer purchasing behavior.
-            </p>
-
-            <a href="https://github.com/rahulstats-analyst" class="project-link" target="_blank">
-                View On GitHub →
-            </a>
 
         </div>
 
+        <!-- SQL -->
+
         <div class="project-card">
 
-            <div class="project-tag">
-                EXCEL DASHBOARDING
+            <div class="project-content">
+
+                <div class="project-tag">
+                    SQL DATA ANALYSIS
+                </div>
+
+                <div class="project-title">
+                    Music Store SQL Analysis
+                </div>
+
+                <p>
+
+                    Performed advanced SQL analysis using joins,
+                    aggregations, subqueries, and customer segmentation
+                    to uncover revenue patterns and customer behavior insights.
+
+                </p>
+
+                <a
+                href="https://github.com/rahulstats-analyst"
+                target="_blank"
+                class="project-link">
+
+                    View Project →
+
+                </a>
+
             </div>
-
-            <div class="project-title">
-                Global Store Performance Analysis
-            </div>
-
-            <p>
-                Built advanced Excel dashboards using Pivot Tables, slicers,
-                KPI metrics, and visualization techniques to analyze sales
-                trends and operational performance across multiple regions.
-            </p>
-
-            <a href="https://github.com/rahulstats-analyst" class="project-link" target="_blank">
-                View On GitHub →
-            </a>
 
         </div>
 
@@ -1097,7 +1489,9 @@ footer{
 
 </section>
 
+<!-- ============================ -->
 <!-- SKILLS -->
+<!-- ============================ -->
 
 <section class="section reveal" id="skills">
 
@@ -1114,6 +1508,7 @@ footer{
             </h3>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>Power BI</span>
                     <span>92%</span>
@@ -1122,9 +1517,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:92%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>Advanced Excel</span>
                     <span>95%</span>
@@ -1133,9 +1530,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:95%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>SQL</span>
                     <span>85%</span>
@@ -1144,9 +1543,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:85%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>Python</span>
                     <span>80%</span>
@@ -1155,9 +1556,12 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:80%"></div>
                 </div>
+
             </div>
 
         </div>
+
+        <!-- OPS -->
 
         <div class="skill-box">
 
@@ -1166,6 +1570,7 @@ footer{
             </h3>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>MIS Reporting</span>
                     <span>90%</span>
@@ -1174,9 +1579,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:90%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>KPI Tracking</span>
                     <span>88%</span>
@@ -1185,9 +1592,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:88%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>Process Optimization</span>
                     <span>87%</span>
@@ -1196,9 +1605,11 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:87%"></div>
                 </div>
+
             </div>
 
             <div class="skill-item">
+
                 <div class="skill-name">
                     <span>Operations Management</span>
                     <span>89%</span>
@@ -1207,6 +1618,7 @@ footer{
                 <div class="skill-bar">
                     <div class="skill-fill" style="width:89%"></div>
                 </div>
+
             </div>
 
         </div>
@@ -1215,7 +1627,9 @@ footer{
 
 </section>
 
+<!-- ============================ -->
 <!-- CERTIFICATIONS -->
+<!-- ============================ -->
 
 <section class="section reveal">
 
@@ -1223,7 +1637,7 @@ footer{
         Certifications
     </h2>
 
-    <div class="certifications">
+    <div class="cert-grid">
 
         <div class="cert-card">
             <h4>Data Science & Python/SQL</h4>
@@ -1231,7 +1645,7 @@ footer{
         </div>
 
         <div class="cert-card">
-            <h4>Data Analytics Job Simulation</h4>
+            <h4>Data Analytics Simulation</h4>
             <p>BCG via Forage • 2024</p>
         </div>
 
@@ -1259,7 +1673,9 @@ footer{
 
 </section>
 
+<!-- ============================ -->
 <!-- CONTACT -->
+<!-- ============================ -->
 
 <section class="section reveal" id="contact">
 
@@ -1270,9 +1686,12 @@ footer{
         </h2>
 
         <p class="contact-text">
-            Open to Business Analyst, Operations Analyst, MIS Executive,
-            and Data Analytics opportunities across Bengaluru, Gurugram,
-            Noida, and other major tech hubs in India.
+
+            Open to Business Analyst, Operations Analyst,
+            MIS Executive, and Data Analytics opportunities
+            across Bengaluru, Gurugram, Noida,
+            and major tech hubs across India.
+
         </p>
 
         <div class="contact-grid">
@@ -1312,8 +1731,12 @@ footer{
                 </div>
 
                 <div class="contact-value">
-                    <a href="https://linkedin.com/in/rahul-pratap-175276264" target="_blank">
+                    <a
+                    href="https://linkedin.com/in/rahul-pratap-175276264"
+                    target="_blank">
+
                         linkedin.com/in/rahul-pratap-175276264
+
                     </a>
                 </div>
 
@@ -1326,8 +1749,12 @@ footer{
                 </div>
 
                 <div class="contact-value">
-                    <a href="https://github.com/rahulstats-analyst" target="_blank">
+                    <a
+                    href="https://github.com/rahulstats-analyst"
+                    target="_blank">
+
                         github.com/rahulstats-analyst
+
                     </a>
                 </div>
 
@@ -1345,7 +1772,9 @@ footer{
 
 <script>
 
-/* CUSTOM CURSOR */
+/* ============================ */
+/* CURSOR */
+/* ============================ */
 
 const cursor=document.querySelector('.cursor');
 
@@ -1356,7 +1785,9 @@ document.addEventListener('mousemove',(e)=>{
 
 });
 
+/* ============================ */
 /* SCROLL REVEAL */
+/* ============================ */
 
 const reveals=document.querySelectorAll('.reveal');
 
@@ -1365,6 +1796,7 @@ window.addEventListener('scroll',()=>{
     reveals.forEach(reveal=>{
 
         const windowHeight=window.innerHeight;
+
         const revealTop=reveal.getBoundingClientRect().top;
 
         if(revealTop<windowHeight-120){
@@ -1377,7 +1809,31 @@ window.addEventListener('scroll',()=>{
 
 });
 
-/* TILT EFFECT */
+/* ============================ */
+/* THEME TOGGLE */
+/* ============================ */
+
+const themeToggle=document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click',()=>{
+
+    document.body.classList.toggle('light');
+
+    if(document.body.classList.contains('light')){
+
+        themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
+
+    }else{
+
+        themeToggle.innerHTML='<i class="fa-solid fa-moon"></i>';
+
+    }
+
+});
+
+/* ============================ */
+/* CARD TILT */
+/* ============================ */
 
 const cards=document.querySelectorAll(
 '.project-card,.impact-card,.timeline-card,.skill-box,.cert-card'
@@ -1399,7 +1855,7 @@ cards.forEach(card=>{
         `perspective(1000px)
         rotateX(${rotateX}deg)
         rotateY(${rotateY}deg)
-        translateY(-6px)`;
+        translateY(-5px)`;
 
     });
 
